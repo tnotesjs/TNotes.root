@@ -22,7 +22,7 @@ interface RootConfig {
 }
 
 /** 已完成迁移或不需要迁移的仓库 */
-const SKIP_LIST = ['TNotes.git-notes', 'TNotes.introduction', 'TNotes.en-words']
+const SKIP_LIST = ['TNotes.git-notes', 'TNotes.introduction', 'en-words']
 
 /** 迁移后的 package.json 模板 */
 const NPM_PACKAGE_JSON = `{

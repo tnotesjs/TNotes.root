@@ -241,13 +241,13 @@
       "days_since_birth": 9863,
       "is_visible_in_root_folder": true
     },
-    "TNotes.en-words": {
+    "en-words": {
       "icon": {
         "src": "https://cdn.jsdelivr.net/gh/Tdahuyou/imgs@main/assets/icon--en-words.svg"
       },
       "title": "en-words",
       "details": "每一个单词就是一个独立的 .md 文件。单词词库的来源说明，在 en-notes 中有详细说明。",
-      "link": "https://github.com/tnotesjs/TNotes.en-words",
+      "link": "https://github.com/tnotesjs/en-words",
       "is_visible_in_root_folder": false
     },
     "TNotes.footprints": {
