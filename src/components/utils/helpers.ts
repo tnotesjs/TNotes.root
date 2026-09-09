@@ -37,7 +37,7 @@ export function buildIdeLink(
 /**
  * 构建本地 IDE 打开链接——笔记文件
  * @param localPath 以库目录开头的相对路径（TNotes.xxx/notes/NNNN. 标题.md），
- *                  由 collect-sidebars 生成
+ *                  由 collect.ts 收集（toc/<repo>.md 原始副本，构建期烹饪）
  */
 export function buildIdeNoteLink(
   tnotesDir: string,

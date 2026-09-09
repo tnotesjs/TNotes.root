@@ -1,7 +1,7 @@
 /**
  * Vite 插件：tnotes-data
  *
- * 把仓内的 .tnotes.json + toc/<repo>.md（collect-sidebars.ts 收集的原始副本）
+ * 把仓内的 .tnotes.json + toc/<repo>.md（collect.ts 收集的原始副本）
  * 烹饪成组件需要的 rootData 结构，通过虚拟模块 `virtual:tnotes-data` 提供：
  *
  *   import { rootData } from 'virtual:tnotes-data'
@@ -25,7 +25,7 @@ const VIRTUAL_ID = 'virtual:tnotes-data'
 const RESOLVED_ID = '\0' + VIRTUAL_ID
 
 // ================================================================
-// TOC.md → SidebarItem 烹饪（自 collect-sidebars.ts 迁入）
+// TOC.md → SidebarItem 烹饪（自原 collect-sidebars.ts 迁入）
 // ================================================================
 
 interface SidebarItem {
