@@ -47,6 +47,7 @@ jobs:
         run: pnpm install
 
       # repository_dispatch 始终全量收集（因为 cancel-in-progress 会取消前序 run，增量模式会丢数据）
+      # 触发库带 sha 时按 commit 精确拉取（绕过 raw 分支 URL 的 CDN 缓存）
       # workflow_dispatch 支持 --repo 增量模式
       - name: Determine repo param
         id: params
@@ -54,14 +55,24 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.repo }}" ]; then
             echo "flags=--remote --repo ${{ github.event.inputs.repo }}" >> "$GITHUB_OUTPUT"
             echo "📦 增量模式：${{ github.event.inputs.repo }}"
+          elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            REPO="${{ github.event.client_payload.repo }}"
+            SHA="${{ github.event.client_payload.sha }}"
+            if [ -n "$SHA" ]; then
+              echo "flags=--remote --trigger-repo $REPO --sha $SHA" >> "$GITHUB_OUTPUT"
+              echo "📦 全量模式（$REPO 按 ${SHA:0:7} 精确拉取）"
+            else
+              echo "flags=--remote" >> "$GITHUB_OUTPUT"
+              echo "📦 全量模式"
+            fi
           else
             echo "flags=--remote" >> "$GITHUB_OUTPUT"
             echo "📦 全量模式"
           fi
 
-      # 收集子知识库配置与侧边栏（tnotes.json + TOC.md → .tnotes.json + sidebars/）
+      # 收集子知识库配置与目录副本（tnotes.json + TOC.md → .tnotes.json + toc/）
       - name: Collect sub-repo metadata
-        run: pnpm tsx scripts/collect-sidebars.ts ${{ steps.params.outputs.flags }}
+        run: pnpm tsx scripts/collect.ts ${{ steps.params.outputs.flags }}
 
       # 如果有变更，提交到仓库
       - name: Commit changes
@@ -88,12 +99,12 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Build with VitePress
-        run: pnpm vitepress build
+        run: pnpm tn:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: dist
 
   deploy:
     environment:

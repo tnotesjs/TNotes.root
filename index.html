@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hans" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TNotes</title>
+    <meta name="description" content="TNotes 开源知识库导航" />
+    <meta name="keywords" content="Tdahuyou, Tdahuyou notes, TNotes" />
+    <meta name="author" content="Tdahuyou" />
+    <link rel="canonical" href="https://tnotesjs.github.io/TNotes/" />
+
+    <!-- 社交分享预览 -->
+    <meta property="og:title" content="TNotes" />
+    <meta
+      property="og:description"
+      content="记录学习与开发过程中的笔记分享，涵盖前端开发、技术文档和个人心得。"
+    />
+    <meta property="og:image" content="/TNotes/cover-image.png" />
+    <meta property="og:url" content="https://tnotesjs.github.io/TNotes/" />
+
+    <link rel="icon" href="/TNotes/favicon.ico" />
+
+    <!-- 主题防闪烁：首帧前确定明暗（与 src/composables/useTheme.ts 对应） -->
+    <script>
+      document.documentElement.classList.toggle(
+        'dark',
+        (localStorage.getItem('tnotes-theme') ?? 'dark') === 'dark',
+      )
+    </script>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PKWV2KVJR7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-PKWV2KVJR7')
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

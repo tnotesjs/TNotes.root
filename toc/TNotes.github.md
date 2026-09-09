@@ -1,0 +1,101 @@
+- [x] 0001. TNotes.github
+- [x] 0020. github 用户排名
+  - [x] 0006. china-ranking
+  - [x] 0005. github-rank
+- [x] 0021. github 上的学习资源
+  - [x] 0014. zju-icicles
+  - [x] 0015. REKCARC-TSC-UHT
+  - [x] 0008. everyone-can-use-english
+- [x] 0019. github 项目源码学习工具
+  - [x] 0007. DeepWiki
+  - [x] 0010. Zread.AI
+  - [x] 0009. gitdiagram
+- [x] 0025. AI 编程指南
+  - [x] 0023. andrej-karpathy-skills
+  - [x] 0026. mattpocock skills
+- [x] 0022. 开源笔记工具
+  - [x] 0011. excalidraw
+  - [x] 0028. tldraw
+  - [x] 0027. MinerU
+  - [x] 0016. memorains
+  - [x] 0012. quill
+  - [x] 0013. yjs
+- [x] 0024. 开源音乐软件
+  - [x] 0018. musicxx
+- TODO
+  - [ ] 0002. github 基本使用
+  - [ ] 0004. OAuth
+  - [ ] 0003. github 开源项目
+  - [ ] 0017. PakePlus
+  - [ ] 0029. new
+  - [ ] 0030. new
+  - [ ] 0031. new
+  - [ ] 0032. new
+  - [ ] 0033. new
+  - [ ] 0034. new
+  - [ ] 0035. new
+  - [ ] 0036. new
+  - [ ] 0037. new
+  - [ ] 0038. new
+  - [ ] 0039. new
+  - [ ] 0040. new
+  - [ ] 0041. new
+  - [ ] 0042. new
+  - [ ] 0043. new
+  - [ ] 0044. new
+  - [ ] 0045. new
+  - [ ] 0046. new
+  - [ ] 0047. new
+  - [ ] 0048. new
+  - [ ] 0049. new
+  - [ ] 0050. new
+  - [ ] 0051. new
+  - [ ] 0052. new
+  - [ ] 0053. new
+  - [ ] 0054. new
+  - [ ] 0055. new
+  - [ ] 0056. new
+  - [ ] 0057. new
+  - [ ] 0058. new
+  - [ ] 0059. new
+  - [ ] 0060. new
+  - [ ] 0061. new
+  - [ ] 0062. new
+  - [ ] 0063. new
+  - [ ] 0064. new
+  - [ ] 0065. new
+  - [ ] 0066. new
+  - [ ] 0067. new
+  - [ ] 0068. new
+  - [ ] 0069. new
+  - [ ] 0070. new
+  - [ ] 0071. new
+  - [ ] 0072. new
+  - [ ] 0073. new
+  - [ ] 0074. new
+  - [ ] 0075. new
+  - [ ] 0076. new
+  - [ ] 0077. new
+  - [ ] 0078. new
+  - [ ] 0079. new
+  - [ ] 0080. new
+  - [ ] 0081. new
+  - [ ] 0082. new
+  - [ ] 0083. new
+  - [ ] 0084. new
+  - [ ] 0085. new
+  - [ ] 0086. new
+  - [ ] 0087. new
+  - [ ] 0088. new
+  - [ ] 0089. new
+  - [ ] 0090. new
+  - [ ] 0091. new
+  - [ ] 0092. new
+  - [ ] 0093. new
+  - [ ] 0094. new
+  - [ ] 0095. new
+  - [ ] 0096. new
+  - [ ] 0097. new
+  - [ ] 0098. new
+  - [ ] 0099. new
+  - [ ] 0100. new

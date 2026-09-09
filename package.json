@@ -8,16 +8,17 @@
     "@tnotesjs/kb": "^0.2.1",
     "@types/minimist": "^1.2.5",
     "@types/node": "^24.10.0",
+    "@vitejs/plugin-vue": "^6.0.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
-    "vitepress": "^1.6.3"
+    "vite": "^7.1.5"
   },
   "scripts": {
-    "tn:dev": "vitepress dev --host --port 0629 --open",
-    "tn:build": "vitepress build",
-    "tn:preview": "vitepress preview",
-    "tn:collect": "tsx scripts/collect-sidebars.ts",
-    "tn:collect-remote": "tsx scripts/collect-sidebars.ts --remote"
+    "tn:dev": "vite",
+    "tn:build": "vite build",
+    "tn:preview": "vite preview",
+    "tn:collect": "tsx scripts/collect.ts",
+    "tn:collect-remote": "tsx scripts/collect.ts --remote"
   },
   "packageManager": "pnpm@9.0.4+sha512.c374b52de3de88c58fd8333df664a737279cdb0e1344ba4054d3b1fffa9a1a3670854f755dca4f16adea3f14be9896a7fcaf167409fe0c1ad60475271dafe81a",
   "dependencies": {

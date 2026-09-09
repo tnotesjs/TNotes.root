@@ -1,0 +1,71 @@
+- [x] 0053. canvas 学习资源
+  - [x] 0056. canvas 在线学习 - 菜鸟教程
+  - [x] 0052. canvas 在线学习 - 掘金
+  - [x] 0054. canvas 在线学习 - MDN Canvas tutorial
+  - [x] 0055. canvas 在线学习 - HTML Canvas Deep Dive
+- [x] 0001. 初始 canvas
+- 开始使用 canvas
+  - [x] 0057. 汇总开始学习 canvas 之前需要掌握的一些基础知识
+  - [x] 0002. 判断浏览器是否支持 canvas
+  - [x] 0003. 区分 canvas 的 width、height 属性和 style 中设置的 width、height 值
+  - [x] 0005. canvas 的默认尺寸 300x150
+  - [x] 0006. 使用 JSDoc 来标注 canvas 变量类型
+  - [x] 0017. 绘制网格
+- 线条 - line
+  - [x] 0008. ctx.lineCap
+  - [x] 0009. ctx.lineDashOffset
+  - [x] 0010. ctx.setLineDash
+  - [x] 0011. ctx.miterLimit
+  - [x] 0012. ctx.lineTo
+  - [x] 0013. ctx.lineJoin
+- 文本 - text
+  - [x] 0014. ctx.fillText、ctx.strokeText
+  - [x] 0015. ctx.font
+  - [x] 0016. ctx.textBaseline、ctx.textAlign
+- 矩形 - rect
+  - [x] 0018. ctx.fillRect
+  - [x] 0019. ctx.strokeRect
+  - [x] 0020. ctx.roundRect
+  - [x] 0021. ctx.rect
+  - [x] 0004. ctx.clearRect
+- 圆弧 - arc
+  - [x] 0024. ctx.arc
+  - [x] 0026. ctx.ellipse
+  - [x] 0027. ctx.arcTo
+- 路径 - path
+  - [x] 0022. ctx.closePath
+  - [x] 0023. ctx.beginPath
+  - [x] 0025. ctx.quadraticCurveTo、ctx.bezierCurveTo
+- 阴影 - shadow
+  - [x] 0043. ctx.shadow 系列
+- 渐变 - gradient
+  - [x] 0040. ctx.createConicGradient
+  - [x] 0041. ctx.createLinearGradient
+  - [x] 0042. ctx.createRadialGradient
+- 滤镜 - filter
+  - [x] 0044. ctx.filter
+- 画布状态的存取 - save&restore
+  - [x] 0007. ctx.save、ctx.restore
+- 图像 - image
+  - [x] 0035. 使用 ctx.drawImage 引入图像
+  - [x] 0031. ctx.clip
+  - [x] 0032. ctx.createPattern
+  - [x] 0033. ctx.drawImage
+  - [x] 0036. ctx.getImageData、ctx.putImageData
+  - [x] 0037. ctx.globalCompositeOperation
+  - [x] 0038. 使用 ctx.globalCompositeOperation 实现刮刮乐效果
+  - [x] 0039. 引用和下载 canvas 图像
+- 坐标系 - coordinate system
+  - [x] 0045. ctx.rotate
+  - [x] 0048. ctx.translate
+  - [x] 0046. ctx.scale
+  - [x] 0047. ctx.transform
+- 动画效果 - Animation
+  - [x] 0028. 矩形边框旋转动画
+  - [x] 0029. 线条穿梭动画
+  - [x] 0030. 模拟进度条动画效果
+  - [x] 0050. 实现动态时钟效果
+  - [x] 0049. 模拟烟花效果
+  - [x] 0034. 模拟太阳系效果
+- 小游戏
+  - [x] 0051. 贪吃蛇小游戏

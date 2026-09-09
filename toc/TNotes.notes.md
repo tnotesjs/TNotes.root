@@ -1,0 +1,41 @@
+- TNotes.notes
+  - [x] 0016. TNotes.notes
+- 软件工具分享
+  - [x] 0046. AltTab
+  - [x] 0012. DeskPins
+  - [x] 0001. LICEcap
+  - [x] 0009. Qwerty Learner
+  - [x] 0014. ScreenBrush
+  - [x] 0010. SimpRead
+  - [x] 0005. Snipaste
+  - [x] 0011. TTSmaker
+  - [x] 0042. Twinkle Tray
+  - [x] 0008. TypingClub
+  - [x] 0050. Vocalremover
+  - [x] 0007. WeRead
+  - [x] 0006. Wgesture
+  - [x] 0013. Yuque
+- markdown
+  - [x] 0023. Writing on GitHub
+  - [x] 0024. 在 GitHub 上编写内联公式需要和中文字符区分开
+  - [x] 0025. mermaid 概述
+  - [x] 0027. 使用 mermaid 来绘制思维导图
+- Windows
+  - [x] 0002. Windows 锁屏快捷键
+  - [x] 0020. 30年前的技术债引发win11离奇bug，微软不敢修！
+- 猫
+  - [x] 0040. 猫咪一天的活动时间
+  - [x] 0047. 金吉拉
+- 蜡笔小新
+  - [x] 0043. 蜡笔小新女明星录
+- 百科
+  - [x] 0021. 下载开源软件还要付钱？论国内搜索引擎中的广告究竟有多不要脸？
+  - [x] 0041. 拔罐后能洗澡吗？
+  - [x] 0044. 烤红薯，吃不完，放冰箱，能放多久呢？
+  - [x] 0045. 路由器和光猫的功能与区别
+- 🤖 AI
+  - [x] 0048. 体验 claude 4
+  - [x] 0049. AI 绘图教程
+  - [x] 0051. Video Tutor
+- ⏰ project graph
+  - [ ] 0026. project graph

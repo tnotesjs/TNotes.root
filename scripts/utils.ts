@@ -85,9 +85,9 @@ async function fetchRemoteFile(
 async function readRepoFile(
   repoName: string,
   filePath: string,
-  options: { forceRemote?: boolean } = {},
+  options: { forceRemote?: boolean; ref?: string } = {},
 ): Promise<string | null> {
-  const { forceRemote = false } = options
+  const { forceRemote = false, ref } = options
 
   // 本地读取
   if (!forceRemote) {
@@ -106,8 +106,8 @@ async function readRepoFile(
     }
   }
 
-  // 远程读取
-  return fetchRemoteFile(repoName, filePath)
+  // 远程读取（ref 可指定 commit sha，绕过 raw 分支 URL 的 CDN 缓存）
+  return fetchRemoteFile(repoName, filePath, ref ?? 'main')
 }
 
 /**
@@ -116,12 +116,13 @@ async function readRepoFile(
  * @param repoName 仓库名称
  * @param filePath JSON 文件相对路径
  * @param options.forceRemote 强制使用远程读取
+ * @param options.ref 远程读取的 ref（分支或 commit sha）
  * @returns 解析后的 JSON 对象，失败返回 null
  */
 async function readRepoJSON<T = any>(
   repoName: string,
   filePath: string,
-  options: { forceRemote?: boolean } = {},
+  options: { forceRemote?: boolean; ref?: string } = {},
 ): Promise<T | null> {
   const content = await readRepoFile(repoName, filePath, options)
   if (content === null) return null

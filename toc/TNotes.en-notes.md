@@ -1,0 +1,28 @@
+- 学习工具&学习资料
+  - [x] 0018. 英语学习工具、学习资料
+- 名著
+  - [x] 0006. 《老人与海》（英+图+词）
+  - [x] 0016. 《老人与海》（英+中）
+- CET-4
+  - [x] 0010. cet-4 checklist
+  - [x] 0011. cet-4 tts-1
+  - [x] 0012. cet-4 tts-2
+  - [x] 0017. cet-4 tts-3
+  - [x] 0015. cet-4 video chapter words preview
+- 单词本
+  - [ ] 0009. 单词本概述
+  - [x] 0007. wordbook-1
+  - [x] 0008. wordbook-2
+- 词库
+  - [x] 0001. en-words 仓库简介
+- 自定义组件
+  - [x] 0014. WordList 基本功能介绍
+- tts
+  - [x] 0013. fish-speech tts 体验
+- 语雀 SDK
+  - [ ] 0004. 批量上传单词到 yuque 知识库中
+- QWERTY-LEARNER 数据源
+  - [x] 0003. qwerty-learner 英文单词数据源
+  - [ ] 0002. qwerty-learner 英语词典数据解析脚本
+- 幕布
+  - [x] 0005. 结合幕布将单词转为思维导图的形式来呈现

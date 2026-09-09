@@ -1,0 +1,10 @@
+- [x] 0001. Custom New Tab URL
+- [x] 0004. chrome 上的 Scripty 插件介绍
+- [x] 0022. Video Speed Controller
+- [x] 0003. 在 GitHub 上预览自己的笔记时处理一些默认样式
+- [x] 0015. chrome for developers 站点简介
+- [x] 0034. chrome 插件发布流程
+- [x] 0035. 将网页转为本地应用
+- [x] 0036. 基于 chromium 内核的浏览器
+- [x] 0018. 3ts
+- [x] 0039. 语雀网页脚本

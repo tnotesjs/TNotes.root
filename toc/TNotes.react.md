@@ -1,0 +1,428 @@
+- [x] 0367. TNotes.react
+- [x] 0368. 学习资料
+  - [x] 0101. react roadmap
+  - [x] 0007. 菜鸟教程
+  - [x] 0040. React 官方文档
+  - [x] 0144. 【AI】React 中文社区与论坛
+- [x] 0369. 初始 React
+  - [x] 0032. React 简介
+  - [x] 0067. React 发展历史
+  - [x] 0068. React 设计理念
+  - [x] 0069. 【AI】React 与其他框架对比
+  - [x] 0076. 【AI】React 核心 API 概览
+  - [x] 0077. 【AI】React 生态系统概览
+  - [x] 0147. 【AI】声明式 vs 命令式编程
+  - [x] 0148. 【AI】虚拟 DOM 概念与优势
+- [x] 0064. 环境准备
+  - [x] 0070. Node.js 安装与配置
+  - [x] 0071. NPM 包管理器
+  - [x] 0072. VSCode 安装与配置
+  - [x] 0074. Prettier 安装与配置
+  - [x] 0035. Emmet 语法支持
+  - [x] 0146. Git 版本控制基础
+  - [x] 0008. react 工程初始化（vite）
+  - [x] 0366. 本地 Playground 环境搭建
+- [x] 0063. 第一个 react 应用
+  - [x] 0042. Hello World（v16）
+  - [x] 0001. Hello World（v19）
+  - [x] 0149. 【AI】常见的基础项目目录结构解析
+  - [x] 0150. 【AI】React v17-v19 入口文件的变化
+- [x] 0062. JSX
+  - [x] 0013. 初始 JSX
+  - [x] 0044. React Element 是只读的
+  - [x] 0014. React.Fragment
+  - [x] 0003. html to jsx 在线转换
+  - [x] 0015. 在 JSX 中使用注释
+  - [x] 0009. 在 JSX 中使用 JS 表达式
+  - [ ] 0153. JSX 中的条件表达式技巧
+  - [x] 0017. 在 JSX 中书写内联样式 style
+  - [x] 0004. 使用 className 给元素添加 class
+  - [ ] 0154. JSX 属性展开运算符（...props）
+  - [x] 0046. JSX 元素的正确使用及常见错误示例【扩展】
+  - [x] 0010. 条件渲染
+  - [x] 0011. 列表渲染
+  - [ ] 0155. key 属性的重要性与最佳实践
+  - [x] 0016. dangerouslySetInnerHTML
+  - [x] 0054. DOMPurify
+  - [x] 0151. 【AI】JSX 是什么（语法糖与编译原理）
+  - [x] 0152. 【AI】JSX 转换过程（Babel 编译）
+  - [x] 0061. 【AI】React Element 与 React Fiber 的关系
+- 组件基础
+  - [x] 0065. 组件
+  - [x] 0021. 组件的基本组成及核心概念
+  - [x] 0002. react 组件名的命名规则
+  - [x] 0022. 认识函数组件和 Hooks
+  - [x] 0023. 认识类组件
+  - [ ] 0156. 函数组件 vs 类组件对比
+  - [x] 0024. 单向数据流是什么
+  - [x] 0049. 函数组件不同调用方式
+  - [ ] 0157. 组件拆分原则与最佳实践
+  - [ ] 0158. 受控组件 vs 非受控组件
+  - [ ] 0159. 组件组合 vs 组件继承
+- Props
+  - [x] 0066. 初始属性
+  - [x] 0019. 组件属性的传递和接收
+  - [x] 0025. 布尔属性
+  - [x] 0026. 属性默认值
+  - [x] 0005. 通过 props 和 children 来传递元素内容
+  - [ ] 0081. props 类型校验
+  - [ ] 0160. Props 解构与重命名
+  - [ ] 0161. 剩余 Props 的传递（rest props）
+  - [ ] 0162. Props drilling 问题
+  - [ ] 0163. Render Props 模式
+- State
+  - [ ] 0082. state 初始化
+  - [ ] 0083. state 更新机制
+  - [ ] 0084. 异步更新与批处理
+  - [ ] 0085. useState、useReducer 对比
+  - [ ] 0164. State 的不可变性原则
+  - [ ] 0165. 复杂 State 管理策略
+  - [ ] 0166. State 提升（Lifting State Up）
+  - [ ] 0167. 派生状态（Derived State）
+  - [ ] 0168. 惰性初始化 State
+- 组件通信
+  - [ ] 0086. 父子组件通信
+  - [ ] 0087. 兄弟组件通信
+  - [ ] 0088. 跨层级通信
+  - [ ] 0089. 事件传递与回调
+  - [ ] 0169. 发布订阅模式实现组件通信
+  - [ ] 0170. 全局状态管理方案对比
+- 生命周期
+  - [ ] 0027. 生命周期
+  - [ ] 0090. 生命周期方法详解
+  - [ ] 0091. 挂载、更新、卸载流程
+  - [ ] 0092. useEffect 与生命周期对比
+  - [ ] 0171. 类组件生命周期完整图谱
+  - [ ] 0172. getDerivedStateFromProps 使用场景
+  - [ ] 0173. getSnapshotBeforeUpdate 实战
+  - [ ] 0174. componentDidCatch 错误捕获
+- Hooks
+  - [ ] 0093. 常用 Hooks（useState、useEffect、useRef）
+  - [ ] 0175. useContext 详解
+  - [ ] 0094. 自定义 Hooks
+  - [ ] 0095. Hooks 规则与陷阱
+  - [x] 0096. useMemo、useCallback 性能优化
+  - [ ] 0176. useLayoutEffect vs useEffect
+  - [ ] 0177. useImperativeHandle 使用场景
+  - [ ] 0178. useDebugValue 调试技巧
+  - [ ] 0179. useId（React 18+）
+  - [ ] 0180. useDeferredValue（React 18+）
+  - [ ] 0181. useTransition（React 18+）
+  - [ ] 0182. useSyncExternalStore（React 18+）
+  - [ ] 0183. useInsertionEffect（React 18+）
+  - [ ] 0184. 自定义 Hooks 最佳实践与命名规范
+  - [ ] 0185. Hooks 闭包陷阱与解决方案
+  - [ ] 0186. Hooks 依赖数组最佳实践
+- ref
+  - [ ] 0097. ref 基本用法
+  - [ ] 0098. forwardRef 转发
+  - [ ] 0099. ref 与 DOM 操作
+  - [x] 0018. 实现图片自动轮播的效果
+  - [ ] 0187. useRef vs createRef
+  - [ ] 0188. ref 回调函数形式
+  - [ ] 0189. ref 存储可变值（非 DOM）
+  - [ ] 0190. 多个 ref 的管理
+- 事件处理
+  - [ ] 0020. 合成事件机制
+  - [ ] 0039. 事件绑定与解绑
+  - [ ] 0050. 事件对象与参数传递
+  - [ ] 0051. 事件委托
+  - [ ] 0191. 原生事件 vs 合成事件
+  - [ ] 0192. 事件池（Event Pooling）机制（React 16）
+  - [ ] 0193. 阻止事件冒泡的正确方式
+  - [ ] 0194. 键盘事件处理
+  - [ ] 0195. 触摸事件与手势库
+- 表单处理
+  - [ ] 0052. 表单元素受控与非受控
+  - [ ] 0053. 表单校验
+  - [ ] 0102. 多表单域处理
+  - [ ] 0103. 文件上传
+  - [ ] 0196. 表单库对比（Formik、React Hook Form）
+  - [ ] 0197. 表单性能优化技巧
+  - [ ] 0198. 动态表单实现
+  - [ ] 0199. 表单防抖与节流
+- 高阶组件（HOC）
+  - [ ] 0104. 高阶组件定义
+  - [ ] 0105. HOC 应用场景
+  - [ ] 0106. HOC 与 Hooks 对比
+  - [ ] 0200. HOC 实现权限控制
+  - [ ] 0201. HOC 组合与链式调用
+  - [ ] 0202. HOC 命名与 displayName
+  - [ ] 0203. HOC 的注意事项与反模式
+- Context
+  - [ ] 0107. Context 创建与使用
+  - [ ] 0108. 多层嵌套与 Provider
+  - [ ] 0109. Context 性能优化
+  - [ ] 0204. Context 默认值设置
+  - [ ] 0205. 多个 Context 组合使用
+  - [ ] 0206. Context 与组件解耦
+  - [ ] 0207. useContext Hook 最佳实践
+- Redux / 状态管理
+  - [ ] 0047. Redux 基本概念
+  - [ ] 0028. redux 的基本使用
+  - [ ] 0029. 为什么说前端的 mvc 已死
+  - [ ] 0030. redux 中的 action
+  - [ ] 0031. 在 redux 中，store、reducer、action 三者之间的关系
+  - [ ] 0110. Redux Toolkit
+  - [ ] 0111. 中间件（thunk、saga）
+  - [ ] 0112. 状态持久化
+  - [ ] 0113. 与 React 集成
+  - [ ] 0208. Redux DevTools 使用
+  - [ ] 0209. Reducer 组合与拆分
+  - [ ] 0210. Selector 与 Reselect 性能优化
+  - [ ] 0211. Redux 不可变性与 Immer
+  - [ ] 0212. RTK Query 数据获取
+  - [ ] 0213. Zustand 轻量级状态管理
+  - [ ] 0214. Jotai 原子化状态管理
+  - [ ] 0215. MobX 响应式状态管理
+  - [ ] 0216. Recoil 状态管理
+  - [ ] 0217. 状态管理方案选型指南
+- 路由（React Router）
+  - [ ] 0114. 路由基础
+  - [ ] 0115. 动态路由
+  - [ ] 0116. 路由守卫
+  - [ ] 0117. 嵌套路由
+  - [ ] 0118. 路由懒加载
+  - [ ] 0218. React Router v6 新特性
+  - [ ] 0219. 编程式导航（useNavigate）
+  - [ ] 0220. 路由参数获取（useParams、useSearchParams）
+  - [ ] 0221. 路由匹配规则
+  - [ ] 0222. 404 页面处理
+  - [ ] 0223. 路由过渡动画
+  - [ ] 0224. 路由权限控制实战
+  - [ ] 0225. 面包屑导航实现
+  - [ ] 0226. TanStack Router（新一代路由）
+- 样式解决方案
+  - [ ] 0227. CSS Modules
+  - [ ] 0228. CSS-in-JS（styled-components、Emotion）
+  - [ ] 0229. Tailwind CSS 集成
+  - [ ] 0230. Sass 或 Less 预处理器
+  - [ ] 0231. 样式方案对比与选型
+  - [ ] 0232. 动态主题切换
+  - [ ] 0233. 响应式设计实践
+- 数据获取与管理
+  - [ ] 0234. Fetch API 基础
+  - [ ] 0235. Axios 请求库
+  - [ ] 0236. SWR 数据获取
+  - [ ] 0237. React Query 或 TanStack Query
+  - [ ] 0238. 请求拦截与响应处理
+  - [ ] 0239. 错误处理与重试机制
+  - [ ] 0240. 缓存策略
+  - [ ] 0241. 乐观更新（Optimistic Updates）
+  - [ ] 0242. 分页与无限滚动
+  - [ ] 0243. GraphQL 与 Apollo Client
+  - [ ] 0244. WebSocket 实时通信
+- 第三方库集成
+  - [ ] 0119. 常用第三方库推荐
+  - [ ] 0120. 状态管理库对比
+  - [ ] 0121. UI 库集成方法
+  - [ ] 0122. 国际化库集成
+  - [x] 0006. react-modal
+  - [x] 0012. react-monaco-editor
+  - [ ] 0033. react-tooltip
+  - [ ] 0038. react-intl
+  - [ ] 0245. 日期处理（date-fns、dayjs）
+  - [ ] 0246. 图表库（recharts、echarts-for-react）
+  - [ ] 0247. 拖拽库（react-dnd、dnd-kit）
+  - [ ] 0248. 动画库（framer-motion、react-spring）
+  - [ ] 0249. 富文本编辑器集成
+  - [ ] 0250. PDF 查看与生成
+- 工程化与脚手架
+  - [ ] 0036. 快速搭建一个基于 vite、antd 的 react 项目
+  - [ ] 0123. 脚手架工具（create-react-app、vite）
+  - [ ] 0124. 项目配置优化
+  - [ ] 0125. 环境变量管理
+  - [ ] 0126. 自动化部署
+  - [ ] 0251. Webpack 配置详解
+  - [ ] 0252. Vite 配置与插件
+  - [ ] 0253. 代码规范（ESLint、Prettier、Husky）
+  - [ ] 0254. Git Hooks 与提交规范
+  - [ ] 0255. Monorepo 架构（Turborepo、Nx）
+  - [ ] 0256. CI 或 CD 流程搭建
+  - [ ] 0257. Docker 容器化部署
+- UI 组件库
+  - [ ] 0037. 学习 antd Message 组件的使用
+  - [ ] 0127. 主流 UI 组件库（Ant Design、MUI）
+  - [ ] 0128. 组件库选型
+  - [ ] 0129. 组件二次封装
+  - [ ] 0130. 主题定制
+  - [ ] 0258. Chakra UI
+  - [ ] 0259. Mantine
+  - [ ] 0260. Radix UI（无样式组件库）
+  - [ ] 0261. shadcn 或 ui（组件拷贝方案）
+  - [ ] 0262. 设计系统搭建
+- 测试与调试
+  - [ ] 0131. 单元测试（Jest、React Testing Library）
+  - [ ] 0132. 端到端测试（Cypress）
+  - [ ] 0133. 调试技巧
+  - [ ] 0134. 错误边界与异常处理
+  - [ ] 0263. Vitest 测试框架
+  - [ ] 0264. 测试覆盖率分析
+  - [ ] 0265. Mock 数据与 MSW
+  - [ ] 0266. 快照测试（Snapshot Testing）
+  - [ ] 0267. 集成测试策略
+  - [ ] 0268. Playwright 端到端测试
+  - [ ] 0269. React DevTools 深度使用
+  - [ ] 0270. 性能分析工具（Profiler）
+  - [ ] 0271. Sentry 错误监控
+- 性能优化
+  - [ ] 0135. 性能分析工具
+  - [ ] 0136. 渲染优化技巧
+  - [ ] 0137. 虚拟化列表
+  - [ ] 0138. 代码分割与懒加载
+  - [ ] 0272. React.memo 使用场景
+  - [ ] 0273. PureComponent 与浅比较
+  - [ ] 0274. 避免不必要的重渲染
+  - [ ] 0275. 长列表优化（react-window、react-virtuoso）
+  - [ ] 0276. 图片懒加载与预加载
+  - [ ] 0277. Bundle 大小优化
+  - [ ] 0278. Tree Shaking
+  - [ ] 0279. Web Workers 使用
+  - [ ] 0280. 首屏加载优化
+  - [ ] 0281. SEO 优化策略
+- 服务端渲染（SSR）与静态生成（SSG）
+  - [ ] 0282. SSR vs CSR vs SSG 对比
+  - [ ] 0283. Next.js 基础
+  - [ ] 0284. Next.js App Router（v13+）
+  - [ ] 0285. Next.js 数据获取方法
+  - [ ] 0286. Next.js API Routes
+  - [ ] 0287. Next.js 部署与优化
+  - [ ] 0288. Remix 框架
+  - [ ] 0289. Gatsby 静态站点生成
+  - [ ] 0290. 水合（Hydration）机制
+  - [ ] 0291. 流式渲染（Streaming SSR）
+- React 的不同版本与重大变更
+  - [ ] 0057. react v16
+  - [ ] 0058. react v17
+  - [ ] 0059. react v18
+  - [ ] 0060. react v19
+  - [x] 0043. ReactDOM.render
+  - [ ] 0100. 并发渲染（Concurrent Rendering）
+  - [x] 0041. 不再支持 UMD，推荐使用 ESM
+  - [ ] 0139. React 版本迭代历史
+  - [ ] 0140. 新特性解读（Concurrent Mode、Suspense）
+  - [ ] 0142. 未来发展趋势
+  - [ ] 0292. Suspense 数据获取模式
+  - [ ] 0293. Server Components（RSC）
+  - [ ] 0294. React Compiler（React 19）
+  - [ ] 0295. use Hook（React 19）
+  - [ ] 0296. 迁移指南（v16 → v17 → v18 → v19）
+- TypeScript 与 React
+  - [ ] 0297. TypeScript 基础
+  - [ ] 0298. React 组件类型定义
+  - [ ] 0299. Props 类型约束
+  - [ ] 0300. State 类型定义
+  - [ ] 0301. Event 事件类型
+  - [ ] 0302. Ref 类型定义
+  - [ ] 0303. 泛型组件
+  - [ ] 0304. 高级类型（Utility Types）
+  - [ ] 0305. 类型推断技巧
+  - [ ] 0306. 第三方库类型声明
+- 移动端开发
+  - [ ] 0307. React Native 基础
+  - [ ] 0308. Expo 框架
+  - [ ] 0309. 移动端适配方案
+  - [ ] 0310. 触摸手势处理
+  - [ ] 0311. 性能优化（移动端）
+  - [ ] 0312. PWA（渐进式 Web 应用）
+- 微前端
+  - [ ] 0313. 微前端概念与架构
+  - [ ] 0314. qiankun 框架
+  - [ ] 0315. Module Federation
+  - [ ] 0316. single-spa
+  - [ ] 0317. 微应用通信
+  - [ ] 0318. 样式隔离方案
+- 安全
+  - [ ] 0319. XSS 攻击防范
+  - [ ] 0320. CSRF 攻击防范
+  - [ ] 0321. 内容安全策略（CSP）
+  - [ ] 0322. 依赖安全审计
+  - [ ] 0323. 敏感数据处理
+  - [ ] 0324. HTTPS 与证书
+- 可访问性（A11y）
+  - [ ] 0325. ARIA 属性
+  - [ ] 0326. 键盘导航
+  - [ ] 0327. 屏幕阅读器支持
+  - [ ] 0328. 焦点管理
+  - [ ] 0329. 颜色对比度
+  - [ ] 0330. 可访问性测试工具
+- 设计模式
+  - [ ] 0331. 容器组件与展示组件
+  - [ ] 0332. 复合组件模式（Compound Components）
+  - [ ] 0333. 状态缩减模式
+  - [ ] 0334. Hooks 模式
+  - [ ] 0335. Provider 模式
+  - [ ] 0336. 门户模式（Portal）
+- 实战项目
+  - [ ] 0337. Todo List 应用
+  - [ ] 0338. 博客系统
+  - [ ] 0339. 电商后台管理系统
+  - [ ] 0340. 实时聊天应用
+  - [ ] 0341. 数据可视化大屏
+  - [ ] 0342. 社交媒体应用
+  - [ ] 0343. 在线代码编辑器
+- 底层原理深入
+  - [ ] 0141. Fiber 架构
+  - [ ] 0078. 项目结构设计
+  - [ ] 0079. 入口文件解析
+  - [ ] 0080. 渲染流程分析
+  - [ ] 0344. Reconciliation（协调）算法
+  - [ ] 0345. Diff 算法详解
+  - [ ] 0346. 调度器（Scheduler）原理
+  - [ ] 0347. 优先级与时间切片
+  - [ ] 0348. 双缓存技术
+  - [ ] 0349. Lane 模型
+  - [ ] 0350. Hooks 实现原理
+  - [ ] 0351. 合成事件系统源码
+  - [ ] 0352. React 源码调试
+- 面试准备
+  - [ ] 0353. 常见面试题汇总
+  - [ ] 0354. 虚拟 DOM vs 真实 DOM
+  - [ ] 0355. React vs Vue 对比
+  - [ ] 0356. 性能优化面试题
+  - [ ] 0357. Hooks 面试题
+  - [ ] 0358. 手写实现系列
+  - [ ] 0359. 项目经验总结
+- 社区与生态
+  - [ ] 0360. React 官方博客与 RFC
+  - [ ] 0361. 优质学习资源推荐
+  - [ ] 0362. 开源项目参与指南
+  - [ ] 0363. 技术会议与活动
+  - [ ] 0364. React 团队成员与影响者
+- ⏰ pending
+  - [ ] 0370. xxx
+  - [ ] 0371. xxx
+  - [ ] 0372. xxx
+  - [ ] 0373. xxx
+  - [ ] 0374. xxx
+  - [ ] 0375. xxx
+  - [ ] 0376. xxx
+  - [ ] 0377. xxx
+  - [ ] 0378. xxx
+  - [ ] 0379. xxx
+  - [ ] 0380. xxx
+  - [ ] 0381. xxx
+  - [ ] 0382. xxx
+  - [ ] 0383. xxx
+  - [ ] 0384. xxx
+  - [ ] 0385. xxx
+  - [ ] 0386. xxx
+  - [ ] 0387. xxx
+  - [ ] 0388. xxx
+  - [ ] 0389. xxx
+  - [ ] 0390. xxx
+  - [ ] 0391. xxx
+  - [ ] 0392. xxx
+  - [ ] 0393. xxx
+  - [ ] 0394. xxx
+  - [ ] 0395. xxx
+  - [ ] 0396. xxx
+  - [ ] 0397. xxx
+  - [ ] 0398. xxx
+  - [ ] 0399. xxx
+  - [ ] 0400. xxx
+  - [ ] 0056. 占位笔记
+  - [ ] 0073. 占位笔记
+  - [ ] 0075. 占位笔记
+  - [ ] 0401. xxx
+  - [x] 0034. eslint 安装与配置

@@ -1,4 +1,4 @@
-# doc => https://vitepress.dev/zh/guide/deploy
+# 构建并部署根站到 GitHub Pages（纯 Vite SPA）
 # 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
 name: Deploy VitePress site to Pages
 
@@ -46,11 +46,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build with VitePress
-        run: pnpm vitepress build
+        run: pnpm tn:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: dist
 
   # 部署工作
   deploy:

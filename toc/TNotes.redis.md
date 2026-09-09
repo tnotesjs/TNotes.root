@@ -1,0 +1,29 @@
+- [x] 0002. redis 简介
+- [x] 0001. 菜鸟教程 redis
+- 安装 redis
+  - [x] 0003. Install Redis from Source
+  - [x] 0004. 通过 homebrew 在 macos 上安装 redis
+  - [x] 0005. 验证 Redis 是否安装成功
+- 快速体验 redis
+  - [x] 0024. try redis
+- redis 规范
+  - [x] 0006. Redis 命令大小写规范
+  - [x] 0023. KEY 冒号分割命名法
+- redis 命令
+  - [x] 0007. 查阅 redis 命令
+  - [x] 0008. Redis 键(key)
+  - [x] 0009. Redis 字符串(String)
+  - [x] 0010. Redis 哈希(Hash)
+  - [x] 0011. Redis 列表(List)
+  - [x] 0012. Redis 集合(Set)
+  - [x] 0013. Redis 有序集合(sorted set)
+  - [x] 0014. Redis HyperLogLog
+  - [x] 0015. Redis 发布订阅
+  - [x] 0016. Redis 事务
+  - [x] 0017. Redis 脚本
+  - [x] 0018. Redis 连接
+  - [x] 0019. Redis 服务器
+  - [x] 0020. Redis GEO
+  - [x] 0021. Redis Stream
+- en-words
+  - [x] 0022. en-words

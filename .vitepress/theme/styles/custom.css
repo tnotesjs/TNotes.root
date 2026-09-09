@@ -1,9 +1,0 @@
-a {
-  text-decoration: none !important;
-}
-
-/* 首页由 KnowledgeNavigator 撑满剩余视口，去掉 VPHome 默认底边距避免出现页面滚动条 */
-.VPHome {
-  margin-bottom: 0 !important;
-}
-
