@@ -3,91 +3,24 @@ import { computed, ref, watch } from 'vue'
 export interface RootItem {
   icon?: { src: string }
   title: string
-  completed_notes_count: Record<string, number> // 现在是对象类型，key 为 "YY.MM" 格式
-  details: string
-  link: string
+  /** 仓库名（TNotes.xxx），collect v2 起写入。 */
+  name?: string
+  completed_notes_count?: Record<string, number> // key 为 "YY.MM" 格式
+  details?: string
+  link?: string
   created_at?: number
   updated_at?: number
   is_visible_in_root_folder?: boolean
 }
 
-// 获取当前月份的笔记数
-function getCurrentMonthCount(
-  completed_notes_count: Record<string, number> | number | undefined,
-): number {
-  if (!completed_notes_count) return 0
+export type SortOption = 'name-asc' | 'name-desc'
 
-  // 兼容旧格式（number 类型）
-  if (typeof completed_notes_count === 'number') {
-    return completed_notes_count
-  }
-
-  // 新格式：从当前月份读取，若当前月份无数据则取最近月份
-  const now = new Date()
-  const year = now.getFullYear().toString().slice(2)
-  const month = (now.getMonth() + 1).toString().padStart(2, '0')
-  const currentKey = `${year}.${month}`
-
-  if (currentKey in completed_notes_count) {
-    return completed_notes_count[currentKey]
-  }
-
-  // 当前月份无数据，取最近月份的值
-  const keys = Object.keys(completed_notes_count).sort()
-  return keys.length > 0 ? completed_notes_count[keys[keys.length - 1]] : 0
-}
-
-// 获取当前月份的增量
-function getCurrentMonthIncrement(
-  completed_notes_count: Record<string, number> | number | undefined,
-): number {
-  if (!completed_notes_count || typeof completed_notes_count === 'number') {
-    return 0
-  }
-
-  const now = new Date()
-  const year = now.getFullYear().toString().slice(2)
-  const month = (now.getMonth() + 1).toString().padStart(2, '0')
-  const currentKey = `${year}.${month}`
-
-  // 上个月
-  const prevDate = new Date(now.getFullYear(), now.getMonth() - 1, 1)
-  const prevYear = prevDate.getFullYear().toString().slice(2)
-  const prevMonth = (prevDate.getMonth() + 1).toString().padStart(2, '0')
-  const prevKey = `${prevYear}.${prevMonth}`
-
-  // 获取当前月份的数量，不存在则取最近月份
-  let currentCount: number
-  if (currentKey in completed_notes_count) {
-    currentCount = completed_notes_count[currentKey]
-  } else {
-    const keys = Object.keys(completed_notes_count).sort()
-    currentCount = keys.length > 0 ? completed_notes_count[keys[keys.length - 1]] : 0
-  }
-
-  const prevCount = completed_notes_count[prevKey] || 0
-
-  return currentCount - prevCount
-}
-
-export type SortOption =
-  | 'name-asc'
-  | 'name-desc'
-  | 'count-asc'
-  | 'count-desc'
-  | 'increment-asc'
-  | 'increment-desc'
-  | 'updated-asc'
-  | 'updated-desc'
-  | 'created-asc'
-  | 'created-desc'
-
-export type ViewMode = 'folder' | 'search' | 'mindmap'
+export type ViewMode = 'folder' | 'search'
 
 export function useNavigator(rootData: any) {
   // 状态
   const activeKey = ref<string | null>(null)
-  const sortOption = ref<SortOption>('updated-desc')
+  const sortOption = ref<SortOption>('name-asc')
   const tnotesDir = ref('')
   const searchQuery = ref('')
   const sectionStates = ref<Record<number, boolean>>({})
@@ -99,44 +32,12 @@ export function useNavigator(rootData: any) {
       rootData.config.root_items as Record<string, RootItem>,
     ).filter(([_, item]) => item.is_visible_in_root_folder !== false)
 
-    // 排序
     return visibleItems.sort((a, b) => {
-      switch (sortOption.value) {
-        case 'name-asc':
-          return (a[1].title || a[0]).localeCompare(b[1].title || b[0])
-        case 'name-desc':
-          return (b[1].title || b[0]).localeCompare(a[1].title || a[0])
-        case 'count-asc':
-          return (
-            getCurrentMonthCount(a[1].completed_notes_count) -
-            getCurrentMonthCount(b[1].completed_notes_count)
-          )
-        case 'count-desc':
-          return (
-            getCurrentMonthCount(b[1].completed_notes_count) -
-            getCurrentMonthCount(a[1].completed_notes_count)
-          )
-        case 'increment-asc':
-          return (
-            getCurrentMonthIncrement(a[1].completed_notes_count) -
-            getCurrentMonthIncrement(b[1].completed_notes_count)
-          )
-        case 'increment-desc':
-          return (
-            getCurrentMonthIncrement(b[1].completed_notes_count) -
-            getCurrentMonthIncrement(a[1].completed_notes_count)
-          )
-        case 'updated-asc':
-          return (a[1].updated_at || 0) - (b[1].updated_at || 0)
-        case 'updated-desc':
-          return (b[1].updated_at || 0) - (a[1].updated_at || 0)
-        case 'created-asc':
-          return (a[1].created_at || 0) - (b[1].created_at || 0)
-        case 'created-desc':
-          return (b[1].created_at || 0) - (a[1].created_at || 0)
-        default:
-          return (a[1].title || a[0]).localeCompare(b[1].title || b[0])
-      }
+      const nameA = a[1].title || a[0]
+      const nameB = b[1].title || b[0]
+      return sortOption.value === 'name-desc'
+        ? nameB.localeCompare(nameA)
+        : nameA.localeCompare(nameB)
     })
   })
 
@@ -276,8 +177,8 @@ export function useNavigator(rootData: any) {
 
   watch(viewMode, (newVal) => {
     localStorage.setItem('knowledge-navigator-view-mode', newVal)
-    // 切换到文件夹或思维导图视图时清空搜索
-    if (newVal === 'folder' || newVal === 'mindmap') {
+    // 切换到文件夹视图时清空搜索
+    if (newVal === 'folder') {
       searchQuery.value = ''
     }
   })

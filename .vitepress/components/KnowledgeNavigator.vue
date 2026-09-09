@@ -9,17 +9,11 @@
     <div class="navigator-header">
       <ViewSwitcher v-model="viewMode" />
       <SearchBar
-        v-if="viewMode === 'folder'"
         v-model="searchQuery"
-        placeholder="搜索「当前知识库」..."
+        :placeholder="
+          viewMode === 'search' ? '搜索「所有知识库」...' : '搜索「当前知识库」...'
+        "
       />
-      <SearchBar
-        v-else-if="viewMode === 'search'"
-        v-model="searchQuery"
-        placeholder="搜索「所有知识库」..."
-      />
-      <!-- 思维导图视图占位，保持高度一致 -->
-      <div v-else class="search-placeholder"></div>
 
       <!-- 全屏切换按钮 -->
       <button
@@ -101,13 +95,6 @@
         :root-data="rootData"
       />
 
-      <!-- 思维导图视图 -->
-      <MindMapView
-        v-else-if="viewMode === 'mindmap'"
-        :active-sidebar="activeSidebar"
-        :active-sidebar-item="activeSidebarItem"
-      />
-
       <div v-else class="empty-content">请选择一个知识库查看内容</div>
     </div>
 
@@ -127,7 +114,6 @@ import { useRepoSidebarLayout } from "./composables/useRepoSidebarLayout";
 import { useResponsive } from "./composables/useResponsive";
 import { useViewportFillHeight } from "./composables/useViewportFillHeight";
 import GlobalSearchView from "./GlobalSearchView.vue";
-import MindMapView from "./MindMapView.vue";
 import RepoInfo from "./RepoInfo.vue";
 import RepoSidebarResizeHandle from "./RepoSidebarResizeHandle.vue";
 import { data as rootData } from "./root.data";
@@ -228,11 +214,7 @@ onMounted(() => {
   if (savedTnotesDir) tnotesDir.value = savedTnotesDir;
 
   const savedViewMode = localStorage.getItem("knowledge-navigator-view-mode");
-  if (
-    savedViewMode === "folder" ||
-    savedViewMode === "search" ||
-    savedViewMode === "mindmap"
-  ) {
+  if (savedViewMode === "folder" || savedViewMode === "search") {
     viewMode.value = savedViewMode as any;
   }
 
@@ -315,13 +297,6 @@ onMounted(() => {
   border-color: color-mix(in srgb, var(--vp-c-divider) 80%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-}
-
-.search-placeholder {
-  flex: 1;
-  min-width: 200px;
-  /* 输入框高度：padding (8px + 8px) + border (1px + 1px) + line-height ≈ 34px */
-  height: 34px;
 }
 
 .fullscreen-btn {
@@ -451,12 +426,6 @@ onMounted(() => {
   flex: 1;
   overflow-y: auto;
   padding-right: 4px;
-}
-
-.content-area :deep(.mindmap-view) {
-  flex: 1;
-  overflow: hidden;
-  border-radius: 12px;
 }
 
 :global(body.is-repo-sidebar-resizing),

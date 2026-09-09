@@ -59,12 +59,8 @@ jobs:
             echo "📦 全量模式"
           fi
 
-      # 收集子知识库统计信息
-      - name: Collect sub-repo configs
-        run: pnpm tsx scripts/build.ts ${{ steps.params.outputs.flags }}
-
-      # 收集子知识库侧边栏
-      - name: Collect sub-repo sidebars
+      # 收集子知识库配置与侧边栏（tnotes.json + TOC.md → .tnotes.json + sidebars/）
+      - name: Collect sub-repo metadata
         run: pnpm tsx scripts/collect-sidebars.ts ${{ steps.params.outputs.flags }}
 
       # 如果有变更，提交到仓库

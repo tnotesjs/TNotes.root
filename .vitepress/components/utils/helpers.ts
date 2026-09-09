@@ -24,40 +24,32 @@ export function toIdeFileUrl(
 }
 
 /**
- * 构建本地 IDE 打开链接（VS Code / Cursor）
+ * 构建本地 IDE 打开链接（VS Code / Cursor）——知识库目录
  */
 export function buildIdeLink(
   tnotesDir: string,
-  repoTitle: string,
-  notePath?: string,
+  repoName: string,
   ide: LocalIdeId = DEFAULT_LOCAL_IDE,
 ): string {
-  let path = `${tnotesDir}/TNotes.${repoTitle}`
-
-  if (notePath) {
-    const cleanPath = notePath
-      .replace('https://tnotesjs.github.io/', '')
-      .replace('/README', '')
-    path = `${tnotesDir}/${cleanPath}`
-  }
-
-  return toIdeFileUrl(path, ide)
+  return toIdeFileUrl(`${tnotesDir}/${repoName}`, ide)
 }
 
 /**
- * @deprecated 使用 buildIdeLink(..., 'vscode')
+ * 构建本地 IDE 打开链接——笔记文件
+ * @param localPath 以库目录开头的相对路径（TNotes.xxx/notes/NNNN. 标题.md），
+ *                  由 collect-sidebars 生成
  */
-export function buildVSCodeLink(
+export function buildIdeNoteLink(
   tnotesDir: string,
-  repoTitle: string,
-  notePath?: string,
+  localPath: string,
+  ide: LocalIdeId = DEFAULT_LOCAL_IDE,
 ): string {
-  return buildIdeLink(tnotesDir, repoTitle, notePath, 'vscode')
+  return toIdeFileUrl(`${tnotesDir}/${localPath}`, ide)
 }
 
 /**
  * 构建 GitHub 仓库链接
  */
-export function buildGitHubLink(repoTitle: string): string {
-  return `https://github.com/tnotesjs/TNotes.${repoTitle}`
+export function buildGitHubLink(repoName: string): string {
+  return `https://github.com/tnotesjs/${repoName}`
 }

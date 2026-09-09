@@ -8,7 +8,6 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import KnowledgeNavigator from '../components/KnowledgeNavigator.vue'
 import './styles/custom.css'
-import './styles/mindmap.css'
 
 export default {
   extends: DefaultTheme,

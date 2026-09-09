@@ -6,7 +6,7 @@
       <a
         v-if="item.link && tnotesDir"
         :title="openNoteTitle"
-        :href="ideLink(item.link)"
+        :href="ideLink(item)"
         target="_blank"
       >
         <img :src="localIdeIcon" :alt="openNoteTitle" class="repo-action-icon" />
@@ -27,7 +27,7 @@
           <a
             v-if="subItem.link && tnotesDir"
             :title="openNoteTitle"
-            :href="ideLink(subItem.link)"
+            :href="ideLink(subItem)"
             target="_blank"
           >
             <img
@@ -52,7 +52,7 @@
               <a
                 v-if="subSubItem.link && tnotesDir"
                 :title="openNoteTitle"
-                :href="ideLink(subSubItem.link)"
+                :href="ideLink(subSubItem)"
                 target="_blank"
               >
                 <img
@@ -71,12 +71,14 @@
 
 <script setup lang="ts">
 import { useLocalIde } from './composables/useLocalIde'
-import { buildIdeLink } from './utils/helpers'
+import { buildIdeNoteLink } from './utils/helpers'
 
 interface SidebarItem {
   text: string
   link?: string
   items?: SidebarItem[]
+  /** 以库目录开头的本地相对路径（collect v2），用于 IDE 打开笔记文件。 */
+  localPath?: string
 }
 
 const props = defineProps<{
@@ -90,8 +92,16 @@ const {
   openNoteTitle,
 } = useLocalIde()
 
-function ideLink(notePath: string) {
-  return buildIdeLink(props.tnotesDir, '', notePath, ide.value)
+function ideLink(item: SidebarItem): string {
+  // 新数据带 localPath（TNotes.xxx/notes/NNNN. 标题.md），直接拼本地根目录；
+  // 旧数据回退到 URL 推导（notes/<dir>/README 目录形式）。
+  if (item.localPath) {
+    return buildIdeNoteLink(props.tnotesDir, item.localPath, ide.value)
+  }
+  const cleanPath = (item.link ?? '')
+    .replace('https://tnotesjs.github.io/', '')
+    .replace('/README', '')
+  return buildIdeNoteLink(props.tnotesDir, cleanPath, ide.value)
 }
 </script>
 

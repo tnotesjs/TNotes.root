@@ -62,14 +62,6 @@
               >
                 <option value="name-asc">按名称升序</option>
                 <option value="name-desc">按名称降序</option>
-                <option value="count-asc">按笔记完成数量升序</option>
-                <option value="count-desc">按笔记完成数量降序</option>
-                <option value="increment-asc">按本月笔记完成数量升序</option>
-                <option value="increment-desc">按本月笔记完成数量降序</option>
-                <option value="updated-asc">按更新时间升序</option>
-                <option value="updated-desc">按更新时间降序</option>
-                <option value="created-asc">按创建时间升序</option>
-                <option value="created-desc">按创建时间降序</option>
               </select>
             </div>
           </div>
