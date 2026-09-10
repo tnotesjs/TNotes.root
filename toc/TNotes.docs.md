@@ -4,7 +4,6 @@
   - [x] 0014. 分仓库模式
   - [ ] 0022. TNotes 脚本（待更新）
   - [ ] 0011. TNotes 笔记配置文件（待更新）
-- [x] 0016. TNotes 更新日志
 - [x] 0006. TNotes 组件
   - [x] 0004. BilibiliVideo
   - [x] 0007. WordList
@@ -43,3 +42,5 @@
   - [ ] 0041. new
   - [ ] 0039. new
   - [ ] 0040. new
+- [x] 0042. ❌ Deprecated
+  - [x] 0016. ❌ TNotes 更新日志
