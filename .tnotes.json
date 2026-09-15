@@ -171,7 +171,7 @@
     },
     "TNotes.docs": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--introduction.svg"
+        "src": "../assets/.tn-kb-icon.svg"
       },
       "title": "docs",
       "completed_notes_count": {
@@ -201,7 +201,7 @@
     },
     "TNotes.egg": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--eggjs.png"
+        "src": "../assets/.tn-kb-icon.png"
       },
       "title": "egg",
       "completed_notes_count": {
