@@ -883,7 +883,7 @@
     },
     "TNotes.chrome": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--chrome.png"
+        "src": "../assets/.tn-kb-icon.png"
       },
       "title": "chrome",
       "completed_notes_count": {
