@@ -1,3 +1,12 @@
+- Desk 使用说明（当前源码参考，待人工审阅）
+  - [ ] 0043. Desk 使用说明入口与快速上手
+  - [ ] 0044. Desk 支持的 Markdown 语法
+  - [ ] 0045. Desk 扩展语法与组件
+  - [ ] 0046. Desk 命令与快捷键
+  - [ ] 0047. TNotes CLI 命令参考
+  - [ ] 0048. Desk 应用设置参考
+  - [ ] 0049. 知识库与笔记配置参考
+  - [ ] 0050. Desk 历史说明修订对照
 - [x] 0001. TNotes 简介
   - [x] 0028. TNotes 根知识库
   - [x] 0002. TNotes 公式支持
@@ -12,7 +21,7 @@
   - [x] 0013. Mindmap
   - [x] 0005. Discussions
   - [x] 0010. Footprints
-- TNotes 命令
+- 旧命令专题（完整清单见 0047）
   - [ ] 0020. build
   - [ ] 0021. create-notes
   - [ ] 0018. dev
