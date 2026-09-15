@@ -1,4 +1,4 @@
-# TNotes
+# TNotes.root
 
 <details>
 <summary>🤔 TNotes 是什么？</summary>
@@ -16,7 +16,7 @@ TNotes 是一个“在线开源知识库”，当前你正在访问的这个仓�
 
 </details>
 
-[1]: https://tnotesjs.github.io/TNotes/
-[2]: https://github.com/tnotesjs/TNotes
+[1]: https://tnotesjs.github.io/TNotes.root/
+[2]: https://github.com/tnotesjs/TNotes.root
 [3]: https://tnotesjs.github.io/TNotes.introduction
 [4]: https://github.com/orgs/tnotesjs/repositories

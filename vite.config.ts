@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import { tnotesData } from './scripts/tnotes-data-plugin'
 
 export default defineConfig({
-  base: '/TNotes/',
+  base: '/TNotes.root/',
   plugins: [vue(), tnotesData()],
   build: {
     outDir: 'dist',
