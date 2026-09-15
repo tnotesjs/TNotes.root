@@ -67,7 +67,7 @@
     },
     "TNotes.c": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs-2026@main/assets/icon--c.svg"
+        "src": "../assets/.tn-kb-icon.svg"
       },
       "title": "c",
       "completed_notes_count": {
@@ -235,7 +235,7 @@
     },
     "TNotes.electron": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--electron.svg"
+        "src": "../assets/.tn-kb-icon.svg"
       },
       "title": "electron",
       "completed_notes_count": {
