@@ -137,7 +137,7 @@
     },
     "TNotes.cooking": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--cooking.svg"
+        "src": "../assets/.tn-kb-icon.svg"
       },
       "title": "cooking",
       "completed_notes_count": {
