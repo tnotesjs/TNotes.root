@@ -3,8 +3,16 @@
   - [x] 0014. 分仓库模式
 - [x] 0052. 配置
   - [ ] 0048. Desk 应用设置参考
-  - [ ] 0011. kb 配置
-  - [ ] 0051. notes 配置
+  - [x] 0011. kb 配置
+  - [x] 0051. notes 配置
+- [x] 0006. TNotes 组件
+  - [x] 0004. BilibiliVideo
+  - [x] 0007. WordList
+  - [x] 0008. Swiper
+  - [x] 0012. Mermaid
+  - [x] 0013. Mindmap
+  - [x] 0005. Discussions
+  - [x] 0010. Footprints
 - [x] 0002. TNotes 公式支持
 - Desk 使用说明（AI 生成，待人工审阅）
   - [ ] 0043. Desk 使用说明入口与快速上手
@@ -14,14 +22,6 @@
   - [ ] 0047. TNotes CLI 命令参考
   - [ ] 0049. 知识库与笔记配置参考
   - [ ] 0050. Desk 历史说明修订对照
-- [x] 0006. TNotes 组件
-  - [x] 0004. BilibiliVideo
-  - [x] 0007. WordList
-  - [x] 0008. Swiper
-  - [x] 0012. Mermaid
-  - [x] 0013. Mindmap
-  - [x] 0005. Discussions
-  - [x] 0010. Footprints
 - 旧命令专题（完整清单见 0047）
   - [ ] 0020. build
   - [ ] 0021. create-notes
@@ -37,7 +37,7 @@
   - [ ] 0037. TNotes 笔记书写规范
   - [ ] 0038. 问题驱动的记笔记模式
   - [x] 0027. emoji 规范
-- ⏰ TNotes 核心功能的实现
+- TNotes 核心功能的实现
   - [ ] 0003. 评论功能的技术实现（Giscus）
   - [ ] 0009. 优化搜索配置
   - [ ] 0023. 处理笨重的 git log 问题（待迁移到 git-notes 中）
