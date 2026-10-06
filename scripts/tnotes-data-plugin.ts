@@ -105,11 +105,31 @@ interface RootData {
   sidebars: Record<string, SidebarItem[]>
 }
 
+/**
+ * 子库 tnotes.json 的 icon.src 可以是库内相对路径（如 `../assets/kb-icon.svg`，
+ * 相对引用它的文件，SSG 会 rebase 到站点 base）。原样交给根站时它会按根站自己的
+ * URL 解析（`/TNotes.root/…` 或 `/assets/…`）而 404，左侧图标裂图。
+ * 这里与 @tnotesjs/ssg `resolveIconHref` 同规则：去掉前导 `./` `../` `/`，
+ * 拼到该库站点地址（pageUrl）下；绝对 URL / data: 原样放行。
+ */
+export function resolveKbIconSrc(src: string, pageUrl: string): string {
+  if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(src)) return src
+  const prefix = pageUrl.endsWith('/') ? pageUrl : `${pageUrl}/`
+  const relative = src.replace(/^(?:\.\.?\/)+/, '').replace(/^\/+/, '')
+  return `${prefix}${relative}`
+}
+
 function buildRootData(): RootData {
   const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'))
   const sidebars: Record<string, SidebarItem[]> = {}
 
   for (const [repo, item] of Object.entries<any>(config.root_items ?? {})) {
+    if (typeof item?.icon?.src === 'string' && item.icon.src) {
+      item.icon.src = resolveKbIconSrc(
+        item.icon.src,
+        item.link ?? `https://tnotesjs.github.io/${repo}/`,
+      )
+    }
     const tocFile = path.join(TOC_DIR, `${repo}.md`)
     if (!fs.existsSync(tocFile)) continue
     const pageUrl =
