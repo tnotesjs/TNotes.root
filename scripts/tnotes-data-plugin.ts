@@ -33,6 +33,8 @@ interface SidebarItem {
   link?: string
   collapsed?: boolean
   items?: SidebarItem[]
+  /** 笔记完成状态（仅笔记项有；分组项无此字段）。UI 用圆点表达，不再拼进 text。 */
+  done?: boolean
   /** 笔记文件在库内的相对路径（TNotes.xxx/notes/NNNN. 标题.md），用于本地 IDE 打开。 */
   localPath?: string
 }
@@ -82,7 +84,8 @@ function tocToSidebarItems(
     const title = parsed.title ?? ''
     const stem = title ? `${index}. ${title}` : index
     const item: SidebarItem = {
-      text: `${parsed.done ? '✅' : '⏰'} ${stem}`,
+      text: stem,
+      done: parsed.done === true,
       link: `${base}notes/${Number.parseInt(index, 10)}`,
       localPath: `${repoName}/notes/${stem}.md`,
     }

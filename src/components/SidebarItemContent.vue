@@ -2,7 +2,10 @@
   <div class="section-item">
     <!-- 第一级 -->
     <div class="level-1">
-      <a :href="item.link" target="_blank" class="item-link">{{ item.text }}</a>
+      <span class="item-main">
+        <NoteStatusDot v-if="item.link" :done="item.done === true" />
+        <a :href="item.link" target="_blank" class="item-link">{{ item.text }}</a>
+      </span>
       <a
         v-if="item.link && tnotesDir"
         :title="openNoteTitle"
@@ -21,9 +24,12 @@
         class="level-2"
       >
         <div class="level-2-content">
-          <a :href="subItem.link" target="_blank" class="item-link">{{
-            subItem.text
-          }}</a>
+          <span class="item-main">
+            <NoteStatusDot v-if="subItem.link" :done="subItem.done === true" />
+            <a :href="subItem.link" target="_blank" class="item-link">{{
+              subItem.text
+            }}</a>
+          </span>
           <a
             v-if="subItem.link && tnotesDir"
             :title="openNoteTitle"
@@ -46,9 +52,15 @@
             class="level-3"
           >
             <div class="level-3-content">
-              <a :href="subSubItem.link" class="item-link" target="_blank">{{
-                subSubItem.text
-              }}</a>
+              <span class="item-main">
+                <NoteStatusDot
+                  v-if="subSubItem.link"
+                  :done="subSubItem.done === true"
+                />
+                <a :href="subSubItem.link" class="item-link" target="_blank">{{
+                  subSubItem.text
+                }}</a>
+              </span>
               <a
                 v-if="subSubItem.link && tnotesDir"
                 :title="openNoteTitle"
@@ -70,6 +82,7 @@
 </template>
 
 <script setup lang="ts">
+import NoteStatusDot from './NoteStatusDot.vue'
 import { useLocalIde } from './composables/useLocalIde'
 import { buildIdeNoteLink } from './utils/helpers'
 
@@ -77,6 +90,8 @@ interface SidebarItem {
   text: string
   link?: string
   items?: SidebarItem[]
+  /** 笔记完成状态（圆点表达，与 Desk / SSG 一致） */
+  done?: boolean
   /** 以库目录开头的本地相对路径（collect v2），用于 IDE 打开笔记文件。 */
   localPath?: string
 }
@@ -141,6 +156,13 @@ function ideLink(item: SidebarItem): string {
 .level-3-container {
   padding-left: 20px;
   margin-top: 5px;
+}
+
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
 }
 
 .item-link {

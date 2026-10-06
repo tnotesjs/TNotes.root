@@ -28,6 +28,10 @@
   --vp-c-brand-dark: #3a5ccc;
   --vp-c-brand-soft: rgba(100, 108, 255, 0.14);
 
+  /* 笔记完成状态圆点（与 @tnotesjs/ui tokens.css 同值，Desk / SSG 共用） */
+  --tn-c-success: #18794e;
+  --tn-c-warning: #915930;
+
   color-scheme: light;
 }
 
@@ -46,6 +50,9 @@ html.dark {
   --vp-c-brand: #a8b1ff;
   --vp-c-brand-dark: #5c73e7;
   --vp-c-brand-soft: rgba(100, 108, 255, 0.16);
+
+  --tn-c-success: #3dd68c;
+  --tn-c-warning: #f9b44e;
 
   color-scheme: dark;
 }

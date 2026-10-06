@@ -21,6 +21,7 @@
           />
         </svg>
       </span>
+      <NoteStatusDot v-if="section.link" :done="section.done === true" />
       <a
         v-if="section.link"
         :href="section.link"
@@ -65,6 +66,7 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
+import NoteStatusDot from './NoteStatusDot.vue'
 import SidebarItemContent from './SidebarItemContent.vue'
 
 const BATCH_SIZE = 50
@@ -78,6 +80,7 @@ interface SidebarItem {
 interface SidebarSection {
   text: string
   link?: string
+  done?: boolean
   collapsed?: boolean
   items: SidebarItem[]
 }

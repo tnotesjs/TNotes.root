@@ -57,7 +57,10 @@
             target="_blank"
             class="result-item"
           >
-            <span class="item-text">{{ item.text }}</span>
+            <span class="item-main">
+              <NoteStatusDot :done="item.done === true" />
+              <span class="item-text">{{ item.text }}</span>
+            </span>
             <span v-if="item.path" class="item-path">{{ item.path }}</span>
           </a>
         </div>
@@ -68,10 +71,12 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import NoteStatusDot from './NoteStatusDot.vue'
 
 interface SearchResultItem {
   text: string
   link: string
+  done?: boolean
   path?: string
 }
 
@@ -141,6 +146,7 @@ const searchInItems = (
       results.push({
         text: item.text,
         link: item.link,
+        done: item.done === true,
         path: parentPath || undefined,
       })
     }
@@ -340,10 +346,16 @@ const totalCount = computed(() => {
   transform: translateX(4px);
 }
 
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.25rem;
+}
+
 .item-text {
   font-size: 15px;
   font-weight: 500;
-  margin-bottom: 0.25rem;
 }
 
 .item-path {
