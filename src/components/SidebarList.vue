@@ -3,9 +3,15 @@
     <!-- 头部统计 -->
     <div class="sidebar-header">
       <div class="statistics">
-        <div class="stat-item" title="已完成笔记数量">
+        <button
+          type="button"
+          class="stat-item"
+          :class="{ active: heatmapScope === 'all' }"
+          title="查看全站热力图"
+          @click="$emit('select-all')"
+        >
           <span class="stat-number">{{ totalCount }}</span>
-        </div>
+        </button>
       </div>
     </div>
 
@@ -16,7 +22,7 @@
         :key="key"
         :repo-key="key"
         :item="item"
-        :is-active="activeKey === key"
+        :is-active="heatmapScope !== 'all' && activeKey === key"
         :is-compact="isCompact"
         @select="$emit('select', $event)"
       />
@@ -37,10 +43,12 @@ defineProps<{
   activeKey: string | null
   isCompact: boolean
   totalCount: number
+  heatmapScope: 'all' | string
 }>()
 
 defineEmits<{
   select: [key: string]
+  'select-all': []
 }>()
 </script>
 
@@ -87,6 +95,20 @@ defineEmits<{
   flex-direction: column;
 }
 
+.stat-item {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px 6px;
+}
+.stat-item.active,
+.stat-item:focus-visible {
+  background: color-mix(in srgb, var(--vp-c-brand) 12%, transparent);
+  outline: none;
+}
 .stat-number {
   font-size: 1.2rem;
   font-weight: bold;

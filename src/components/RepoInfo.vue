@@ -51,6 +51,7 @@ const ideLink = computed(() =>
   buildIdeLink(props.tnotesDir, repoName.value, ide.value),
 );
 const githubLink = computed(() => buildGitHubLink(repoName.value));
+
 </script>
 
 <style scoped>
@@ -113,4 +114,5 @@ const githubLink = computed(() => buildGitHubLink(repoName.value));
 .repo-action-icon:hover {
   opacity: 1;
 }
+
 </style>

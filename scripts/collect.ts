@@ -5,18 +5,29 @@ import { __dirname, ROOT_CONFIG_PATH } from './constants.ts'
 import { pMap, readRepoFile, readRepoJSON } from './utils.ts'
 
 /**
- * collect.ts (v3, 2026-09-09)
+ * collect.ts (v4, 2026-10-06)
  *
- * 收集子库原始数据，供根站构建（scripts/tnotes-data-plugin.ts）使用：
+ * 收集子库原始数据，供根站构建使用：
  *
- *   tnotes.json → 合并进根配置 root_items（title/details/link/icon/完成数）
- *   TOC.md      → toc/<repo>.md 原始副本（烹饪在构建期由 Vite 插件完成）
+ *   tnotes.json       → 合并进根配置 root_items（title/details/link/icon）
+ *   tnotes.stats.json → 月累计（兼容）+ 根侧聚合热力图数据（v2：每日 commits 用于着色）
+ *   TOC.md            → toc/<repo>.md 原始副本
  *
- * 读取模式：
- *   本地（默认）：../kbs/<repo>/ 或 ../<repo>/，用于首次 seed 与手动刷新
- *   远程（--remote）：GitHub raw，CI 用；--trigger-repo + --sha 时该库按
- *   commit sha 精确拉取（不可变 URL，绕过 raw 分支 URL 的 CDN 缓存）
+ * 统计优先读 tnotes.stats.json；缺失时回退 tnotes.json → stats.completedNotesCount。
  */
+
+interface DayStat {
+  delta: number
+  total: number
+  /** commits authored that day (v2+); heatmap colour */
+  commits?: number
+}
+
+interface KbStatsFile {
+  version: number
+  sourceCommit?: string
+  byYear: Record<string, Record<string, Record<string, DayStat>>>
+}
 
 interface KbConfig {
   name?: string
@@ -46,8 +57,11 @@ interface RootConfig {
   root_items: Record<string, RootItem>
 }
 
+const ROOT_STATS_PATH = path.resolve(__dirname, '..', 'tnotes.stats.json')
+
 const readLocalJSON = <T = any>(filePath: string): T | null => {
   try {
+    if (!fs.existsSync(filePath)) return null
     return JSON.parse(fs.readFileSync(filePath, 'utf8'))
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error)
@@ -57,11 +71,67 @@ const readLocalJSON = <T = any>(filePath: string): T | null => {
   }
 }
 
-/** 最新月份的完成数（current 缺失时取最后一个月份）。 */
+/** Latest monthly total (current missing → last month key). */
 function latestCompletedCount(counts: Record<string, number> | undefined): number {
   if (!counts) return 0
   const keys = Object.keys(counts).sort()
   return keys.length > 0 ? counts[keys[keys.length - 1]] : 0
+}
+
+/** byYear → dense-ish monthly YY.MM → total (last day of each month). */
+function monthlyFromByYear(
+  byYear: KbStatsFile['byYear'] | undefined,
+): Record<string, number> | undefined {
+  if (!byYear) return undefined
+  const snapshots: Record<string, number> = {}
+  for (const year of Object.keys(byYear).sort()) {
+    const yy = year.slice(-2)
+    const months = byYear[year] ?? {}
+    for (const month of Object.keys(months).sort()) {
+      const days = months[month] ?? {}
+      const dayKeys = Object.keys(days).sort()
+      if (dayKeys.length === 0) continue
+      const last = days[dayKeys[dayKeys.length - 1]]
+      snapshots[`${yy}.${month}`] = last.total
+    }
+  }
+  return Object.keys(snapshots).length > 0 ? snapshots : undefined
+}
+
+/**
+ * Merge per-KB byYear into an all-site byYear:
+ * sum deltas + commits per day; recompute running totals chronologically.
+ */
+function mergeByYear(parts: KbStatsFile['byYear'][]): KbStatsFile['byYear'] {
+  const merged: KbStatsFile['byYear'] = {}
+  for (const byYear of parts) {
+    for (const year of Object.keys(byYear)) {
+      for (const month of Object.keys(byYear[year] ?? {})) {
+        for (const day of Object.keys(byYear[year][month] ?? {})) {
+          const cell = byYear[year][month][day]
+          merged[year] ??= {}
+          merged[year][month] ??= {}
+          const prev = merged[year][month][day] ?? { delta: 0, total: 0, commits: 0 }
+          merged[year][month][day] = {
+            delta: prev.delta + (Number(cell.delta) || 0),
+            total: 0,
+            commits: (prev.commits ?? 0) + (Number(cell.commits) || 0),
+          }
+        }
+      }
+    }
+  }
+  let running = 0
+  for (const year of Object.keys(merged).sort()) {
+    for (const month of Object.keys(merged[year]).sort()) {
+      for (const day of Object.keys(merged[year][month]).sort()) {
+        const cell = merged[year][month][day]
+        running += cell.delta
+        cell.total = running
+      }
+    }
+  }
+  return merged
 }
 
 async function collect(
@@ -74,7 +144,7 @@ async function collect(
 ): Promise<void> {
   const { remote = false, repo, triggerRepo, sha } = options
 
-  console.log('📚 开始收集知识库数据（tnotes.json + TOC.md）...\n')
+  console.log('📚 开始收集知识库数据（tnotes.json + tnotes.stats.json + TOC.md）...\n')
   if (remote) console.log('🌐 使用远程模式读取\n')
   if (repo) console.log(`🎯 增量模式：仅收集 ${repo}\n`)
   if (triggerRepo && sha) {
@@ -107,21 +177,37 @@ async function collect(
   const results = await pMap(
     repoList,
     async (repoName) => {
-      // 触发库按 sha 拉取（仅远程模式有意义）；其余库走 main / 本地
       const ref = remote && repoName === triggerRepo && sha ? sha : undefined
-      const [config, tocText] = await Promise.all([
+      const [config, tocText, statsFile] = await Promise.all([
         readRepoJSON<KbConfig>(repoName, 'tnotes.json', {
           forceRemote: remote,
           ref,
         }),
         readRepoFile(repoName, 'TOC.md', { forceRemote: remote, ref }),
+        readRepoJSON<KbStatsFile>(repoName, 'tnotes.stats.json', {
+          forceRemote: remote,
+          ref,
+        }),
       ])
-      return { repoName, config, tocText }
+      return { repoName, config, tocText, statsFile }
     },
     6,
   )
 
-  for (const { repoName, config, tocText } of results) {
+  const perKbByYear: Record<string, KbStatsFile['byYear']> = {}
+  // When incremental collect, keep previous per-kb buckets from root stats.
+  const prevRootStats = readLocalJSON<{
+    version?: number
+    byYear?: KbStatsFile['byYear']
+    byKnowledgeBase?: Record<string, { byYear: KbStatsFile['byYear'] }>
+  }>(ROOT_STATS_PATH)
+  if (prevRootStats?.byKnowledgeBase) {
+    for (const [name, bucket] of Object.entries(prevRootStats.byKnowledgeBase)) {
+      if (bucket?.byYear) perKbByYear[name] = bucket.byYear
+    }
+  }
+
+  for (const { repoName, config, tocText, statsFile } of results) {
     if (!config) {
       console.error(`❌ [${repoName}] 读取 tnotes.json 失败`)
       failCount++
@@ -130,16 +216,20 @@ async function collect(
 
     const pageUrl = config.pageUrl ?? `https://tnotesjs.github.io/${repoName}/`
 
-    // 1. TOC.md → toc/<repo>.md 原始副本（TOC 缺失不致命：信息卡仍更新）
     if (tocText) {
       fs.writeFileSync(path.join(tocDir, `${repoName}.md`), tocText, 'utf8')
     } else {
       console.warn(`⚠️  [${repoName}] TOC.md 缺失，跳过目录副本（保留旧数据）`)
     }
 
-    // 2. tnotes.json → root_items（保留根仓本地维护的字段）
+    const monthly =
+      monthlyFromByYear(statsFile?.byYear) ?? config.stats?.completedNotesCount
+
+    if (statsFile?.byYear) {
+      perKbByYear[repoName] = statsFile.byYear
+    }
+
     const prev = rootConfig.root_items[repoName] ?? {}
-    const completedCounts = config.stats?.completedNotesCount
     rootConfig.root_items[repoName] = {
       ...prev,
       name: repoName,
@@ -147,31 +237,64 @@ async function collect(
       details: config.description ?? prev.details ?? '',
       link: pageUrl,
       icon: config.icon?.src ? { src: config.icon.src } : prev.icon,
-      completed_notes_count: completedCounts ?? prev.completed_notes_count,
+      completed_notes_count: monthly ?? prev.completed_notes_count,
     }
-    totalCompleted += latestCompletedCount(completedCounts)
+    totalCompleted += latestCompletedCount(monthly)
 
-    console.log(`✅ [${repoName}] 已收集`)
+    const source = statsFile?.byYear
+      ? 'tnotes.stats.json'
+      : monthly
+        ? 'tnotes.json(legacy)'
+        : 'none'
+    console.log(`✅ [${repoName}] 已收集（统计: ${source}）`)
     successCount++
   }
 
-  // 3. 汇总总完成数并写回根配置
+  // Full-list collect: recompute total from all root_items so incremental mode
+  // doesn't under-count other libraries.
+  if (!repo) {
+    totalCompleted = 0
+    for (const name of rootConfig.sub_knowledge_list) {
+      totalCompleted += latestCompletedCount(
+        rootConfig.root_items[name]?.completed_notes_count,
+      )
+    }
+  } else {
+    totalCompleted = 0
+    for (const name of rootConfig.sub_knowledge_list) {
+      totalCompleted += latestCompletedCount(
+        rootConfig.root_items[name]?.completed_notes_count,
+      )
+    }
+  }
+
   rootConfig.statistic = {
     ...(rootConfig.statistic ?? {}),
     completed_notes_count: totalCompleted,
   }
   fs.writeFileSync(ROOT_CONFIG_PATH, `${JSON.stringify(rootConfig, null, 2)}\n`, 'utf8')
 
+  const allByYear = mergeByYear(Object.values(perKbByYear))
+  const rootStats = {
+    version: 2 as const,
+    generatedAt: new Date().toISOString(),
+    byYear: allByYear,
+    byKnowledgeBase: Object.fromEntries(
+      Object.entries(perKbByYear).map(([name, byYear]) => [name, { byYear }]),
+    ),
+  }
+  fs.writeFileSync(ROOT_STATS_PATH, `${JSON.stringify(rootStats, null, 2)}\n`, 'utf8')
+
   console.log('\n📊 收集完成统计:')
   console.log(`   ✅ 成功: ${successCount}`)
   console.log(`   ❌ 失败: ${failCount}`)
   console.log(`   📁 输出目录: ${tocDir}`)
   console.log(`   📝 根配置已更新: ${ROOT_CONFIG_PATH}`)
+  console.log(`   📈 根统计已更新: ${ROOT_STATS_PATH}`)
 
   if (failCount > 0) process.exit(1)
 }
 
-// CLI 入口
 const args = minimist(process.argv.slice(2))
 collect({
   remote: !!args.remote,

@@ -15,5 +15,9 @@ declare module 'virtual:tnotes-data' {
   export const rootData: {
     config: any
     sidebars: Record<string, any[]>
+    stats: {
+      byYear: Record<string, any>
+      byKnowledgeBase: Record<string, { byYear: Record<string, any> }>
+    } | null
   }
 }

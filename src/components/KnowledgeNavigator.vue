@@ -10,6 +10,24 @@
         "
       />
 
+      <!-- 页宽切换：与 Desk PageWidthIcon 同款；wide 箭头向内，normal 箭头向外 -->
+      <button
+        type="button"
+        class="page-width-btn"
+        :title="pageWidthLabel"
+        :aria-label="pageWidthLabel"
+        :aria-pressed="pageWidth === 'wide'"
+        @click="togglePageWidth"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="page-width-icon">
+          <path
+            v-if="pageWidth === 'wide'"
+            d="M10 12H3m0 0 3-3m-3 3 3 3m8-3h7m0 0-3-3m3 3-3 3"
+          />
+          <path v-else d="M3 12h7m0 0-3-3m3 3-3 3m14-3h-7m0 0 3-3m-3 3 3 3" />
+        </svg>
+      </button>
+
       <!-- 主题切换按钮 -->
       <button
         class="theme-btn"
@@ -72,45 +90,81 @@
       <SidebarList
         v-show="!sidebarHidden"
         :sorted-items="sortedRootItems"
-        :active-key="activeKey"
+        :active-key="listActiveKey"
         :is-compact="sidebarCompact"
         :total-count="totalNotesCount"
-        @select="selectSidebar"
+        :heatmap-scope="heatmapScope"
+        @select="onSelectKb"
+        @select-all="onSelectAll"
       />
       <RepoSidebarResizeHandle />
     </div>
 
     <!-- 右侧内容区 -->
     <div class="content-area">
-      <!-- 文件夹视图 -->
+      <!-- 全站视图：全站热力图 + 知识库排行 / 近期动态，不展示子库标题/操作与 TOC -->
       <div
-        v-if="viewMode === 'folder' && activeSidebar && activeSidebarItem"
+        v-if="viewMode === 'folder' && heatmapScope === 'all'"
         class="sidebar-content"
       >
-        <RepoInfo :item="activeSidebarItem" :tnotes-dir="tnotesDir" />
-
-        <div class="collapse-toggle">
-          <!-- <span class="collapse-toggle-label">{{
-            allCollapsed ? '全部展开' : '全部折叠'
-          }}</span> -->
-          <button
-            class="switch-btn"
-            :class="{ 'is-on': !allCollapsed }"
-            :title="allCollapsed ? '全部展开' : '全部折叠'"
-            @click="toggleAllSections"
-          >
-            <span class="switch-knob" />
-          </button>
+        <div class="sidebar-content-inner" :class="{ 'is-wide': pageWidth === 'wide' }">
+          <!-- 热力图定宽（fit-content），排行 / 近期动态跟随热力图宽度居中 -->
+          <div class="overview-column">
+            <ContributionHeatmap
+              v-if="activeHeatmapByYear"
+              class="content-heatmap"
+              :by-year="activeHeatmapByYear"
+            />
+            <KbActivityOverview
+              v-if="rootData.stats?.byKnowledgeBase"
+              class="overview-companion"
+              :by-knowledge-base="rootData.stats.byKnowledgeBase"
+              :root-items="rootData.config.root_items"
+              @select="onSelectKb"
+            />
+          </div>
         </div>
+      </div>
 
-        <SidebarSection
-          v-for="(section, index) in activeSidebar"
-          :key="index"
-          :section="section"
-          :collapsed="getSectionState(Number(index))"
-          :tnotes-dir="tnotesDir"
-          @toggle="toggleSection(Number(index))"
-        />
+      <!-- 子库视图：RepoInfo + 该库热力图 + TOC -->
+      <div
+        v-else-if="viewMode === 'folder' && activeSidebar && activeSidebarItem"
+        class="sidebar-content"
+      >
+        <!-- 主内容列：限宽居中，宽屏下不铺满 -->
+        <div class="sidebar-content-inner" :class="{ 'is-wide': pageWidth === 'wide' }">
+          <RepoInfo :item="activeSidebarItem" :tnotes-dir="tnotesDir" />
+
+          <!-- 热力图卡片按图本身宽度居中；容器变窄时卡片内横向滚动 -->
+          <ContributionHeatmap
+            v-if="activeHeatmapByYear"
+            class="content-heatmap"
+            :by-year="activeHeatmapByYear"
+          />
+
+          <div class="collapse-toggle">
+            <!-- <span class="collapse-toggle-label">{{
+              allCollapsed ? '全部展开' : '全部折叠'
+            }}</span> -->
+            <button
+              class="switch-btn"
+              :class="{ 'is-on': !allCollapsed }"
+              :title="allCollapsed ? '全部展开' : '全部折叠'"
+              @click="toggleAllSections"
+            >
+              <span class="switch-knob" />
+            </button>
+          </div>
+
+          <SidebarSection
+            v-for="(section, index) in activeSidebar"
+            :key="index"
+            :section="section"
+            :collapsed="getSectionState(Number(index))"
+            :tnotes-dir="tnotesDir"
+            @toggle="toggleSection(Number(index))"
+          />
+        </div>
       </div>
 
       <!-- 全局搜索视图 -->
@@ -141,15 +195,24 @@ import { useResponsive } from "./composables/useResponsive";
 import { useTheme } from "./composables/useTheme";
 import GlobalSearchView from "./GlobalSearchView.vue";
 import RepoInfo from "./RepoInfo.vue";
+import { usePageWidth } from "./composables/usePageWidth";
 import RepoSidebarResizeHandle from "./RepoSidebarResizeHandle.vue";
 import SearchBar from "./SearchBar.vue";
 import SettingsDialog from "./SettingsDialog.vue";
+import ContributionHeatmap from "./ContributionHeatmap.vue";
+import KbActivityOverview from "./KbActivityOverview.vue";
 import SidebarList from "./SidebarList.vue";
 import SidebarSection from "./SidebarSection.vue";
 import ViewSwitcher from "./ViewSwitcher.vue";
 import icon__setting from "/icon__setting.svg";
 
 const showSettings = ref(false);
+const { pageWidth, toggle: togglePageWidth } = usePageWidth();
+const pageWidthLabel = computed(() =>
+  pageWidth.value === "wide"
+    ? "超宽显示（点击恢复标准页宽）"
+    : "标准页宽（点击切换超宽显示）",
+);
 const containerRef = ref<HTMLElement | null>(null);
 
 const { isDark, toggle: toggleTheme } = useTheme();
@@ -194,6 +257,30 @@ const effectiveSidebarLayoutWidth = computed(() => {
 const totalNotesCount = computed(() => {
   const { completed_notes_count } = rootData.config.statistic;
   return typeof completed_notes_count === "number" ? completed_notes_count : 0;
+});
+
+/** Heatmap scope: all-site or a specific KB repo key. */
+const heatmapScope = ref<"all" | string>("all");
+
+function onSelectAll(): void {
+  heatmapScope.value = "all";
+}
+
+function onSelectKb(key: string): void {
+  selectSidebar(key);
+  heatmapScope.value = key;
+}
+
+/** 全站选中时左侧子库不显示选中态 */
+const listActiveKey = computed(() =>
+  heatmapScope.value === "all" ? null : activeKey.value,
+);
+
+const activeHeatmapByYear = computed(() => {
+  const stats = rootData.stats;
+  if (!stats) return null;
+  if (heatmapScope.value === "all") return stats.byYear ?? null;
+  return stats.byKnowledgeBase?.[heatmapScope.value]?.byYear ?? null;
 });
 
 onMounted(() => {
@@ -296,6 +383,39 @@ onMounted(() => {
   opacity: 1;
 }
 
+.page-width-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 4px;
+  opacity: 0.6;
+  flex-shrink: 0;
+  color: var(--vp-c-text-1);
+}
+
+.page-width-btn:hover {
+  background-color: color-mix(in srgb, var(--vp-c-bg) 55%, transparent);
+  opacity: 1;
+}
+
+/* 对齐 Desk PageWidthIcon：16px 描边箭头 */
+.page-width-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .settings-btn {
   display: flex;
   align-items: center;
@@ -396,6 +516,42 @@ onMounted(() => {
   flex: 1;
   overflow-y: auto;
   padding-right: 4px;
+}
+
+.sidebar-content-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+/* 超宽显示：铺满内容区（顶栏页宽开关） */
+.sidebar-content-inner.is-wide {
+  max-width: none;
+}
+
+/* 全站视图列：宽度由热力图决定，伴随卡片不撑宽（contain: inline-size） */
+.overview-column {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-bottom: 12px;
+}
+.overview-column > .content-heatmap {
+  width: auto;
+  margin-inline: 0;
+}
+.overview-companion {
+  width: 100%;
+  contain: inline-size;
+}
+
+.content-heatmap {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
 }
 
 :global(body.is-repo-sidebar-resizing),

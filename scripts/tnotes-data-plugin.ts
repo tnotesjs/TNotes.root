@@ -20,6 +20,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const TOC_DIR = path.join(ROOT, 'toc')
 const CONFIG_PATH = path.join(ROOT, '.tnotes.json')
+const STATS_PATH = path.join(ROOT, 'tnotes.stats.json')
 
 const VIRTUAL_ID = 'virtual:tnotes-data'
 const RESOLVED_ID = '\0' + VIRTUAL_ID
@@ -103,6 +104,14 @@ function tocToSidebarItems(
 interface RootData {
   config: any
   sidebars: Record<string, SidebarItem[]>
+  /** Aggregated completion heatmap data from collect.ts. */
+  stats: {
+    byYear: Record<string, Record<string, Record<string, { delta: number; total: number; commits?: number }>>>
+    byKnowledgeBase: Record<
+      string,
+      { byYear: Record<string, Record<string, Record<string, { delta: number; total: number; commits?: number }>>> }
+    >
+  } | null
 }
 
 /**
@@ -141,7 +150,20 @@ function buildRootData(): RootData {
     )
   }
 
-  return { config, sidebars }
+  let stats: RootData['stats'] = null
+  if (fs.existsSync(STATS_PATH)) {
+    try {
+      const raw = JSON.parse(fs.readFileSync(STATS_PATH, 'utf-8'))
+      stats = {
+        byYear: raw.byYear ?? {},
+        byKnowledgeBase: raw.byKnowledgeBase ?? {},
+      }
+    } catch {
+      stats = null
+    }
+  }
+
+  return { config, sidebars, stats }
 }
 
 // ================================================================
@@ -162,7 +184,7 @@ export function tnotesData(): Plugin {
     },
 
     handleHotUpdate({ file, server }) {
-      if (file.startsWith(TOC_DIR) || file === CONFIG_PATH) {
+      if (file.startsWith(TOC_DIR) || file === CONFIG_PATH || file === STATS_PATH) {
         const mod = server.moduleGraph.getModuleById(RESOLVED_ID)
         if (mod) server.moduleGraph.invalidateModule(mod)
         server.ws.send({ type: 'full-reload' })
