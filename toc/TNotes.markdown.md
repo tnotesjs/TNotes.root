@@ -1,7 +1,7 @@
 - [x] 0001. TNotes.markdown
   - [x] 0002. 学习资料
-- [x] 0004. 初始 markdown
-- [x] 0005. markdown 编辑器
+  - [x] 0004. 初始 markdown
+- [x] 0005. markdown 编辑器简介
   - [x] 0003. Writing on GitHub
   - [x] 0019. github.dev
 - [x] 0020. markdown 核心语法
