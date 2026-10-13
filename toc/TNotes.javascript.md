@@ -1,12 +1,13 @@
 - [x] 0141. TNotes.javascript
+  - [x] 0346. 提示词
   - [x] 0112. 前端学习路线
   - [x] 0006. 常见的两个 JS 运行环境：浏览器、NodeJS
   - [x] 0142. TC39 与 ECMA-262
   - [x] 0160. JavaScript高级程序设计（第4版）
 - [x] 0156. 什么是 JavaScript
   - [x] 0157. 简短的历史回顾
-  - [x] 0158. JavaScript实现
-  - [x] 0159. JavaScript版本
+  - [x] 0158. JavaScript 实现
+  - [x] 0159. JavaScript 版本
 - [x] 0161. HTML 中的 JavaScript
   - [x] 0162. script元素
   - [x] 0163. 行内代码与外部文件
