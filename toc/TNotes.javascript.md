@@ -9,10 +9,10 @@
   - [x] 0158. JavaScript 实现
   - [x] 0159. JavaScript 版本
 - [x] 0161. HTML 中的 JavaScript
-  - [x] 0162. script元素
+  - [x] 0162. script 元素
   - [x] 0163. 行内代码与外部文件
   - [x] 0164. 文档模式
-  - [x] 0165. noscript元素
+  - [x] 0165. noscript 元素
 - [ ] 0167. 语言基础
   - [x] 0168. 语法
   - [x] 0021. 注释

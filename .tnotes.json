@@ -1,6 +1,6 @@
 {
   "statistic": {
-    "completed_notes_count": 1431
+    "completed_notes_count": 1432
   },
   "sub_knowledge_list": [
     "TNotes.docs",
@@ -960,7 +960,7 @@
         "26.07": 51,
         "26.08": 51,
         "26.09": 51,
-        "26.10": 51
+        "26.10": 52
       },
       "details": "前端三件套及跟前端相关的其它内容",
       "link": "https://tnotesjs.github.io/TNotes.javascript/",
