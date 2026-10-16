@@ -259,13 +259,14 @@
   - [ ] 0058. new 命令
   - [ ] 0059. 使用 Object.create() 创建实例对象
   - [ ] 0060. 构造函数
-- window.xxx
+- window 对象
   - [x] 0079. onbeforeunload
   - [x] 0080. confirm
   - [x] 0081. postMessage
   - [ ] 0108. DOMParser
   - [ ] 0109. XSLTProcessor
   - [ ] 0144. AudioContext
+  - [ ] 0347. structuredClone
 - Web Streams
   - [x] 0072. Web Streams
   - [x] 0073. Web Streams 核心概念
