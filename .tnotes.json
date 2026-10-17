@@ -39,7 +39,7 @@
   "root_items": {
     "TNotes.algorithms": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--algorithms.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "algorithms",
       "completed_notes_count": {
