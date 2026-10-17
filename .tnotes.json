@@ -100,7 +100,7 @@
     },
     "TNotes.canvas": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--canvas.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "canvas",
       "completed_notes_count": {
@@ -133,7 +133,7 @@
     },
     "TNotes.cooking": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--cooking.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "cooking",
       "completed_notes_count": {
@@ -195,7 +195,7 @@
     },
     "TNotes.egg": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--eggjs.png"
+        "src": "../assets/kb-icon.png"
       },
       "title": "egg",
       "completed_notes_count": {
@@ -228,7 +228,7 @@
     },
     "TNotes.electron": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--electron.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "electron",
       "completed_notes_count": {
@@ -266,7 +266,7 @@
     },
     "TNotes.en-notes": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--en-notes.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "en-notes",
       "completed_notes_count": {
@@ -308,7 +308,7 @@
     },
     "TNotes.footprints": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--footprints.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "footprints",
       "completed_notes_count": {
@@ -341,7 +341,7 @@
     },
     "TNotes.git-notes": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--git.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "git-notes",
       "completed_notes_count": {
@@ -378,7 +378,7 @@
     },
     "TNotes.leetcode": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--leetcode.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "leetcode",
       "completed_notes_count": {
@@ -413,7 +413,7 @@
     },
     "TNotes.miniprogram": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--miniprogram-wechat.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "miniprogram",
       "completed_notes_count": {
@@ -446,7 +446,7 @@
     },
     "TNotes.network": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--network.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "network",
       "completed_notes_count": {
@@ -477,7 +477,7 @@
     },
     "TNotes.nodejs": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--nodejs.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "nodejs",
       "completed_notes_count": {
@@ -510,7 +510,7 @@
     },
     "TNotes.notes": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--pc.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "notes",
       "completed_notes_count": {
@@ -543,7 +543,7 @@
     },
     "TNotes.python": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--python.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "python",
       "completed_notes_count": {
@@ -605,7 +605,7 @@
     },
     "TNotes.svg": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--svg.png"
+        "src": "../assets/kb-icon.png"
       },
       "title": "svg",
       "completed_notes_count": {
@@ -674,7 +674,7 @@
     },
     "TNotes.vite": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--vite.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "vite",
       "completed_notes_count": {
@@ -711,7 +711,7 @@
     },
     "TNotes.vitepress": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--vitepress.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "vitepress",
       "completed_notes_count": {
@@ -743,7 +743,7 @@
     },
     "TNotes.vue": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--vue.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "vue",
       "completed_notes_count": {
@@ -780,7 +780,7 @@
     },
     "TNotes.webpack": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--webpack.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "webpack",
       "completed_notes_count": {
@@ -816,7 +816,7 @@
     },
     "TNotes.sql": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--mysql.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "sql",
       "completed_notes_count": {
@@ -877,7 +877,7 @@
     },
     "TNotes.vscode": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--vscode.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "vscode",
       "completed_notes_count": {
@@ -908,7 +908,7 @@
     },
     "TNotes.redis": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--redis.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "redis",
       "completed_notes_count": {
@@ -971,7 +971,7 @@
     },
     "TNotes.markdown": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--markdown.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "markdown",
       "completed_notes_count": {
@@ -992,7 +992,7 @@
     },
     "TNotes.github": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--github.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "github",
       "completed_notes_count": {
@@ -1013,7 +1013,7 @@
     },
     "TNotes.rust": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs-2026@main/assets/icon--rust.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "rust",
       "completed_notes_count": {
@@ -1031,7 +1031,7 @@
     },
     "TNotes.vitest": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs-2026@main/assets/icon--vitest.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "vitest",
       "completed_notes_count": {
