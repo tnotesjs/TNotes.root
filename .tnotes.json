@@ -571,7 +571,7 @@
     },
     "TNotes.react": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--react.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "react",
       "completed_notes_count": {
@@ -638,7 +638,7 @@
     },
     "TNotes.typescript": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--typescript.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "typescript",
       "completed_notes_count": {
@@ -937,7 +937,7 @@
     },
     "TNotes.javascript": {
       "icon": {
-        "src": "https://cdn.jsdelivr.net/gh/tnotesjs/imgs@main/assets/icon--javascript.svg"
+        "src": "../assets/kb-icon.svg"
       },
       "title": "javascript",
       "completed_notes_count": {
