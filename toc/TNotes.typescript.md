@@ -279,6 +279,7 @@
   - [ ] 0282. 大型项目的类型组织
   - [ ] 0283. monorepo 中的 TypeScript
 - TS 7.0
+  - [ ] 0040. TypeScript v7
   - [ ] 0284. typescript-go 项目
 - 踩坑记录
   - [x] 0231. VSCode 打开 TS 项目提示 Intellisense 问题
