@@ -102,6 +102,7 @@
   - [ ] 0094. 自定义 Hooks
   - [ ] 0095. Hooks 规则与陷阱
   - [x] 0096. useMemo、useCallback 性能优化
+    - [x] 0045. babel-plugin-react-compiler
   - [ ] 0176. useLayoutEffect vs useEffect
   - [ ] 0177. useImperativeHandle 使用场景
   - [ ] 0178. useDebugValue 调试技巧
