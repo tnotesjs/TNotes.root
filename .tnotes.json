@@ -1,6 +1,6 @@
 {
   "statistic": {
-    "completed_notes_count": 1437
+    "completed_notes_count": 1438
   },
   "sub_knowledge_list": [
     "TNotes.docs",
@@ -593,7 +593,7 @@
         "26.06": 65,
         "26.08": 65,
         "26.09": 65,
-        "26.10": 65
+        "26.10": 66
       },
       "details": "React 笔记",
       "link": "https://tnotesjs.github.io/TNotes.react/",
