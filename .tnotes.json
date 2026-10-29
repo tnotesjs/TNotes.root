@@ -1,6 +1,6 @@
 {
   "statistic": {
-    "completed_notes_count": 1443
+    "completed_notes_count": 1444
   },
   "sub_knowledge_list": [
     "TNotes.docs",
@@ -768,7 +768,7 @@
         "26.06": 52,
         "26.08": 52,
         "26.09": 52,
-        "26.10": 52
+        "26.10": 53
       },
       "details": "Vue.js 笔记",
       "link": "https://tnotesjs.github.io/TNotes.vue/",
