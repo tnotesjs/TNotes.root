@@ -9,65 +9,41 @@
   - [x] 0006. demos.8 - 使用 polygon 绘制多边形
   - [x] 0003. demos.9 - 使用 circle 绘制圆形
   - [x] 0004. demos.10 - 使用 ellipse 绘制椭圆形
-  - [x] 0031. 使用属性 x、y、dx、dy 控制文本的绘制位置
-  - [x] 0029. 使用属性 text-anchor 设置文本的水平对齐方式
-  - [x] 0030. 使用属性 textLength 约束文本长度
-  - [x] 0032. 通过 text 的其他属性来控制文本样式
-  - [x] 0019. 使用 tspan 更细粒度地控制 text 中的内容
-  - [x] 0018. 使用 textPath 实现按照指定路径绘制文本
-  - [x] 0012. 使用 path 绘制直线
-  - [x] 0013. 绘制【扫码】图标
-  - [x] 0011. 使用 path 绘制弧
-  - [x] 0036. 绘制【群】图标
-  - [x] 0010. 使用 path 绘制二次贝塞尔曲线
-  - [x] 0014. 使用 path 绘制三次贝塞尔曲线
-  - [x] 0028. 使用属性 stroke、stroke-width、stroke-opacity、stroke-linecap 设置描边样式
-  - [x] 0027. 使用属性 stroke-linejoin 设置线条连接处样式
-  - [x] 0025. 使用属性 stroke-dasharray 设置虚线
-  - [x] 0026. 使用属性 stroke-dashoffset 设置虚线的偏移
-  - [x] 0023. 【练习】使用 stroke-dasharray 模拟加载中动画效果
-  - [ ] 0015. 使用属性 fill、fill-opacity 设置填充样式
-  - [ ] 0024. 使用属性 fill-rule 设置填充规则
-  - [ ] 0037. 绘制【眼睛】图标
-  - [ ] 0020. 使用 use 引用图形
+  - [x] 0031. demos.11 - 使用属性 x、y、dx、dy 控制文本的绘制位置
+  - [x] 0029. demos.12 - 使用属性 text-anchor 设置文本的水平对齐方式
+  - [x] 0030. demos.13 - 使用属性 textLength 约束文本长度
+  - [x] 0032. demos.14 - 通过 text 的其他属性来控制文本样式
+  - [x] 0019. demos.15 - 使用 tspan 更细粒度地控制 text 中的内容
+  - [x] 0018. demos.16 - 使用 textPath 实现按照指定路径绘制文本
+  - [x] 0012. demos.17 - 使用 path 绘制直线
+  - [x] 0013. demos.18 - 绘制【扫码】图标
+  - [x] 0011. demos.19 - 使用 path 绘制弧
+  - [x] 0036. demos.20 - 绘制【群】图标
+  - [x] 0010. demos.21 - 使用 path 绘制二次贝塞尔曲线
+  - [x] 0014. demos.22 - 使用 path 绘制三次贝塞尔曲线
+  - [x] 0028. demos.23 - 使用属性 stroke、stroke-width、stroke-opacity、stroke-linecap 设置描边样式
+  - [x] 0027. demos.24 - 使用属性 stroke-linejoin 设置线条连接处样式
+  - [x] 0025. demos.25 - 使用属性 stroke-dasharray 设置虚线
+  - [x] 0026. demos.26 - 使用属性 stroke-dashoffset 设置虚线的偏移
+  - [x] 0023. demos.27 - 【练习】使用 stroke-dasharray 模拟加载中动画效果
+  - [ ] 0015. demos.28 - 使用属性 fill、fill-opacity 设置填充样式
+  - [ ] 0024. demos.29 - 使用属性 fill-rule 设置填充规则
+  - [ ] 0037. demos.30 - 绘制【眼睛】图标
+  - [ ] 0020. demos.31 - 使用 use 引用图形
   - [ ] 0017. 使用 g 作为容器
-  - [ ] 0016. 使用 defs 定义图形
+  - [ ] 0016. demos.33 - 使用 defs 定义图形
   - [ ] 0021. 使用 css 控制 svg 样式
-  - [ ] 0022. 使用 js 控制 svg 实现 CRUD 操作
-  - [ ] 0053. demos.3 - xxx
-  - [ ] 0054. demos.4 - xxx
-  - [ ] 0055. demos.5 - xxx
-  - [ ] 0056. demos.6 - xxx
-  - [ ] 0057. demos.7 - xxx
-  - [ ] 0058. demos.8 - xxx
-  - [ ] 0059. demos.9 - xxx
-  - [ ] 0060. demos.10 - xxx
-  - [ ] 0061. demos.11 - xxx
-  - [ ] 0051. demos.12 - 在 html 中嵌入 svg
-  - [ ] 0052. demos.13 - xxx
-  - [ ] 0062. new
-  - [ ] 0063. new
-  - [ ] 0064. new
-  - [ ] 0065. new
-  - [ ] 0066. new
-  - [ ] 0067. new
-  - [ ] 0068. new
-  - [ ] 0069. new
-  - [ ] 0070. new
-- svg 起步
-  - [x] 0043. 理解 svg 是什么
+  - [ ] 0022. demos.35 - 使用 js 控制 svg 实现 CRUD 操作
+  - [ ] 0038. 【练习】绘制动态折线图
+  - [ ] 0033. 简易动态坐标系制作
+  - [ ] 0040. 【练习】绘制柱状图
+  - [ ] 0042. 【练习】绘制静态的饼图
+  - [ ] 0041. 【练习】绘制动态饼图
+  - [ ] 0039. 【练习】绘制静态折线图
+- [x] 0043. 理解 svg 是什么
   - [x] 0044. 对比 svg 和 canvas
   - [x] 0045. 区分 Image 和 Graphic
   - [x] 0046. 理解 svg 的 xmlns 属性
   - [x] 0047. 理解 svg 的 version 属性
   - [x] 0009. vscode svg 相关插件
-- path 路径
-  - [x] 0048. 认识 path 元素
-- pending
-  - [ ] 0038. 【练习】绘制动态折线图
-  - [ ] 0040. 【练习】绘制柱状图
-  - [ ] 0042. 【练习】绘制静态的饼图
-  - [ ] 0041. 【练习】绘制动态饼图
-  - [ ] 0039. 【练习】绘制静态折线图
-  - [ ] 0033. 简易动态坐标系制作
-  - [ ] 0049. empty
+- [x] 0048. 认识 path 元素
